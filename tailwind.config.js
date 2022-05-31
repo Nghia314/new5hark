@@ -1,7 +1,10 @@
 module.exports = {
-  content: [],
+  content: ["./src/**/*.{js,jsx}", "./components/**/*.{js,jsx}"],
   theme: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["synthwave"],
+  },
+};
