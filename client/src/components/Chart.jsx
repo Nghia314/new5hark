@@ -66,6 +66,7 @@ function Chart() {
         ],
         borderWidth: 1,
       },
+
       {
         label: 'Weekly',
         data: [2, 3, 5, 7, 15, 6],
@@ -87,6 +88,7 @@ function Chart() {
         ],
         borderWidth: 1,
       },
+
     ],
   };
 

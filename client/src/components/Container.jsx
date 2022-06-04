@@ -4,6 +4,7 @@ import Chart from './Chart';
 function Container() {
 
   return (
+
     <div>
       <div className="card max-w-3xl p-3">
         <div className="card-body border-solid border-2 border-sky-800 bg-slate-800 border-solid rounded">
@@ -12,6 +13,7 @@ function Container() {
         </div>
       </div>
     </div>
+
   );
 }
 
