@@ -9,6 +9,10 @@ const activitySchema = new Schema({
     type: String,
     required: false,
   },
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
+  },
 });
 
 const Activity = model("activity", activitySchema);
