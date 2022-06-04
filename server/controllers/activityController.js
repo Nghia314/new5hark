@@ -9,4 +9,10 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
+
+  getActivities(req, res) {
+    Activity.find()
+      .then((acts) => res.json(acts))
+      .catch((err) => res.status(500).json(err));
+  },
 };
