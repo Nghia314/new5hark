@@ -4,7 +4,7 @@ const { Schema, model } = require("mongoose");
 const achievementSchema = new Schema({
   activity: {
     type: Schema.Types.ObjectId,
-    ref: "Activity",
+    ref: "activity",
   },
   doneToday: {
     type: Boolean,
