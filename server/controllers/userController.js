@@ -32,8 +32,11 @@ async login({ body }, res) {
   const user = await User.create(body);
 
   if (!user) {
-    
+    return res.status(400).json({ message: "Something is wrong! "});
+
   }
-}
+  const token = signToken(user);
+  res.json({ token, user });
+},
 
 };
