@@ -7,7 +7,20 @@ module.exports = {
     if (!newActivity) {
       res.status(500).json(err);
     } else {
-      const upUser = await User.findOneAndUpdate({});
+      // adds to users createdActivities array
+      const upUser = await User.findOneAndUpdate(
+        { _id: req.body.createdBy },
+        { $addToSet: { createdActivities: newActivity._id } },
+        { runValidators: true, new: true }
+      );
+
+      // if user found all good, otherwise activity still added
+      !upUser
+        ? res.status(202).json({
+            activity: newActivity,
+            message: "Activity added but no User with given ID found",
+          })
+        : res.json(newActivity);
     }
   },
 
