@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
 <div className="navbar bg-neutral">
   <div className="flex-1">
-    <a className="btn btn-ghost normal-case text-xl">Home</a>
-    <a className="btn btn-ghost normal-case text-xl">Your Day</a>
-    <a className="btn btn-ghost normal-case text-xl">Dashboard</a>
-    <a className="btn btn-ghost normal-case text-xl">Login</a>
+    <Link className="btn btn-ghost normal-case text-xl" to="/">Home</Link>
+    <Link className="btn btn-ghost normal-case text-xl" to="/YourDay">Your Day</Link>
+    <Link className="btn btn-ghost normal-case text-xl" to="/Dashboard">Dashboard</Link>
+    <Link className="btn btn-ghost normal-case text-xl" to="/login">Login</Link>
   </div>
   <div className="flex-none">
     <button className="btn btn-square btn-ghost">
