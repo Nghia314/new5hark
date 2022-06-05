@@ -1,9 +1,12 @@
 import React from "react";
+import SignupForm from "../components/SignupForm";
 
 function Login() {
   return (
     <>
-      <h1 className="text-center text-3xl font-bold">Login page!</h1>
+      <div className="flex justify-center p-3">
+        <SignupForm className="grow max-w-[50rem]"/>
+      </div>
     </>
   );
 }
