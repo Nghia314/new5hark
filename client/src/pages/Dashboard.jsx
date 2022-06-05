@@ -3,7 +3,14 @@ import React from "react";
 function Dashboard() {
   return (
     <>
-      <h1 className="text-center text-3xl font-bold">Dashboard page!</h1>
+    <div className="grid row-2 m-3 gap-3">
+      <div className="card col bg-neutral p-3">
+        <h1>Test</h1>
+      </div>
+      <div className="card col bg-neutral p-3">
+        <h1>Test</h1>
+      </div>
+    </div>
     </>
   );
 }
