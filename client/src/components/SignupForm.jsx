@@ -21,8 +21,8 @@ function SignupForm() {
       if (!res.ok) {
         throw new Error("Oops, please try again!");
       }
-      const { token, user } = await res.json();
-      Sec.login(token);
+      const { token } = await res.json();
+      Security.save(token);
     } catch (err) {
       alert("Password needs to be 8 chars or longer");
     }

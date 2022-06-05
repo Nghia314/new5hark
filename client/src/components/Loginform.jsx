@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { loginUser } from "../utils/API";
-import Sec from "../utils/security";
+import Security from "../utils/security";
 
 function Loginform() {
   const [formState, setForm] = useState({ email: "", password: "" });
@@ -22,8 +22,8 @@ function Loginform() {
         throw new Error("Please try again!");
       }
 
-      const { token, user } = await res.json();
-      Sec.login(token);
+      const { token } = await res.json();
+      Security.save(token);
     } catch (err) {
       console.log(err);
       alert("Please try again!");

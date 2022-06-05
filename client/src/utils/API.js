@@ -18,7 +18,13 @@ export const loginUser = (data) => {
   });
 };
 
-//get all activities
+export const fetchAllActivities = () => {
+  return fetch("api/activities", {
+    method: "GET",
+  });
+};
+
+// export const
 
 // export const createActivity = (data) => {
 //   return fetch("api/activities", {
