@@ -22,8 +22,8 @@ function Loginform() {
         throw new Error("Please try again!");
       }
 
-      const { tok, user } = await res.json();
-      Sec.login(tok);
+      const { token, user } = await res.json();
+      Sec.login(token);
     } catch (err) {
       console.log(err);
       alert("Please try again!");

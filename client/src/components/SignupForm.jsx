@@ -22,8 +22,6 @@ function SignupForm() {
         throw new Error("Oops, please try again!");
       }
       const { token, user } = await res.json();
-      console.log(token);
-
       Sec.login(token);
     } catch (err) {
       alert("Password needs to be 8 chars or longer");
