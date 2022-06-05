@@ -18,6 +18,8 @@ export const loginUser = (data) => {
   });
 };
 
+//get all activities
+
 // export const createActivity = (data) => {
 //   return fetch("api/activities", {
 //     method: "POST",

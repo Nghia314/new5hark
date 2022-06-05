@@ -26,7 +26,7 @@ function SignupForm() {
 
       Sec.login(token);
     } catch (err) {
-      alert("Try again");
+      alert("Password needs to be 8 chars or longer");
     }
     setForm({
       name: "",
@@ -54,13 +54,14 @@ function SignupForm() {
           <div className="form-group mb-6">
             <input
               type="email"
-              className="input input-bordered w-full focus:input-primary"
+              className="input input-bordered w-full valid:focus:input-primary invalid:text-error invalid:border-error focus:invalid:text-error focus:invalid:border-error"
               name="email"
               placeholder="Email"
               value={formState.email}
               onChange={handleChange}
             />
           </div>
+
           <div className="form-group mb-6">
             <input
               type="password"
@@ -71,6 +72,7 @@ function SignupForm() {
               onChange={handleChange}
             />
           </div>
+
           <button type="submit" className="btn btn-primary w-full">
             Sign up
           </button>
