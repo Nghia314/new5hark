@@ -6,12 +6,15 @@ function SignupForm() {
 
   return (
     <>
-      <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md">
+      <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral max-w-md">
         <form>
           <div className="form-group mb-6">
             <input
               type="text"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="form-control block w-full px-3 py-1.5 m-0
+                text-base font-normal text-light
+                bg-base-100 bg-clip-padding border-gray-300 rounded transition ease-in-out
+                focus:bg-base-100 focus:outline-primary focus:outline-none"
               name="name"
               aria-describedby="emailHelp123"
               placeholder="Name"
@@ -21,7 +24,10 @@ function SignupForm() {
           <div className="form-group mb-6">
             <input
               type="email"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="form-control block w-full px-3 py-1.5 m-0
+                text-base font-normal text-light
+                bg-base-100 bg-clip-padding border-gray-300 rounded transition ease-in-out
+                focus:bg-base-100 focus:outline-primary focus:outline-none"
               id="exampleInput125"
               placeholder="Email"
             />
@@ -29,7 +35,10 @@ function SignupForm() {
           <div className="form-group mb-6">
             <input
               type="password"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="form-control block w-full px-3 py-1.5 m-0
+                text-base font-normal text-light
+                bg-base-100 bg-clip-padding border-gray-300 rounded transition ease-in-out
+                focus:bg-base-100 focus:outline-primary focus:outline-none"
               id="exampleInput126"
               placeholder="Password"
             />
