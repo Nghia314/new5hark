@@ -1,15 +1,18 @@
 const { Activity, User } = require("../models");
 
 module.exports = {
-  async newActivity(req, res) {
-    const newActivity = await Activity.create(req.body);
+  async newActivity({ user, body }, res) {
+    const newActivity = await Activity.create({
+      ...body,
+      createdBy: user._id,
+    });
 
     if (!newActivity) {
       res.status(500).json(err);
     } else {
       // adds to users createdActivities array
       const upUser = await User.findOneAndUpdate(
-        { _id: req.body.createdBy },
+        { _id: user._id },
         { $addToSet: { createdActivities: newActivity._id } },
         { runValidators: true, new: true }
       );
