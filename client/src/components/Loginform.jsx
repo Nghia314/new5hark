@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { loginUser } from "../utils/API";
+import Sec from "../utils/security";
+
 function Loginform() {
   const [formState, setForm] = useState({ email: "", password: "" });
 
@@ -12,6 +15,19 @@ function Loginform() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     // console.log(formState);
+    try {
+      const res = await loginUser(formState);
+
+      if (!res.ok) {
+        throw new Error("Please try again!");
+      }
+
+      const { tok, user } = await res.json();
+      Sec.login(tok);
+    } catch (err) {
+      console.log(err);
+      alert("Please try again!");
+    }
   };
   return (
     <>
