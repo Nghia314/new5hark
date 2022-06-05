@@ -6,7 +6,7 @@ function ComponentTester() {
   return (
     <>
       <h1 className="text-center text-3xl font-bold">Test Components Here!</h1>
-      {/* <Loginform /> */}
+      <Loginform />
       <SignupForm />
     </>
   );

@@ -14,7 +14,40 @@ module.exports = {
       return res.status(400).json({ message: "Please try again" });
     }
   },
-// get a single user by their id
+
+  async getOneUser(req, res) {
+    const usr = await User.findOne({
+      _id: req.user._id,
+    });
+    if (!usr) {
+      return res.status(400).json({ message: "No user with id found" });
+    }
+    const token = signToken(usr);
+    res.json({ token, usr });
+  },
+
+  async login(req, res) {
+    try {
+      //find user matching user in request
+      const user = await User.findOne({ email: req.body.email });
+      if (!user) {
+        return res.status(400).json({ message: "No User Found" });
+      }
+      //authenticate pw
+      const checkPw = await user.isCorrectPassword(req.body.password);
+      if (!checkPw) {
+        return res.status(400).json({ message: "Wrong Password" });
+      }
+      //sign token including user
+      const token = signToken(user);
+
+      res.json({ token, user });
+    } catch (err) {
+      return res.status(400).json({ message: "Something went wrong" });
+    }
+  },
+
+  // gets all users
   async getUsers(req, res) {
     const usrs = await User.find()
       .select({ __v: 0, password: 0 })
@@ -25,22 +58,5 @@ module.exports = {
       .populate({ path: "achievements", select: { __v: 0 } });
 
     !usrs ? res.status(404).json("ERR") : res.json(usrs);
-  },
-
-  async login(req, res) {
-    try {
-      const user = await User.findOne({ email: req.body.email });
-      if (!user) {
-        return res.status(400).json({ message: "No User Found" });
-      }
-      const checkPw = await user.isCorrectPassword(req.body.password);
-      if (!checkPw) {
-        return res.status(400).json({ message: "Wrong Password" });
-      }
-      const token = signToken(user);
-      res.json({ token, user });
-    } catch (err) {
-      return res.status(400).json({ message: "Something went wrong" });
-    }
   },
 };

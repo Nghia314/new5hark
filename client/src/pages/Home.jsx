@@ -1,10 +1,9 @@
 import React from "react";
 
 function Home() {
-
   return (
     <>
-      <h1>homeroute</h1>
+      <h1 className="text-3xl">homeroute</h1>
     </>
   );
 }

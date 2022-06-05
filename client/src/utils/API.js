@@ -18,13 +18,21 @@ export const loginUser = (data) => {
   });
 };
 
-// export const createActivity = (data) => {
-//   return fetch("api/activities", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       authorization: `Bearer ${token}`,
-//     },
-//     body: JSON.stringify(data),
-//   });
-// };
+export const createActivity = (data, token) => {
+  return fetch("api/activities", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
+
+export const fetchAllActivities = () => {
+  return fetch("api/activities", {
+    method: "GET",
+  });
+};
+
+// export const

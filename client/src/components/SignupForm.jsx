@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { createUser } from "../utils/API";
-import Sec from "../utils/security";
+import Security from "../utils/security";
 
 function SignupForm() {
   const [formState, setForm] = useState({ name: "", email: "", password: "" });
@@ -21,12 +21,10 @@ function SignupForm() {
       if (!res.ok) {
         throw new Error("Oops, please try again!");
       }
-      const { token, user } = await res.json();
-      console.log(token);
-
-      Sec.login(token);
+      const { token } = await res.json();
+      Security.save(token);
     } catch (err) {
-      alert("Try again");
+      alert("Password needs to be 8 chars or longer");
     }
     setForm({
       name: "",
@@ -54,13 +52,14 @@ function SignupForm() {
           <div className="form-group mb-6">
             <input
               type="email"
-              className="input input-bordered w-full focus:input-primary"
+              className="input input-bordered w-full valid:focus:input-primary invalid:text-error invalid:border-error focus:invalid:text-error focus:invalid:border-error"
               name="email"
               placeholder="Email"
               value={formState.email}
               onChange={handleChange}
             />
           </div>
+
           <div className="form-group mb-6">
             <input
               type="password"
@@ -71,6 +70,7 @@ function SignupForm() {
               onChange={handleChange}
             />
           </div>
+
           <button type="submit" className="btn btn-primary w-full">
             Sign up
           </button>

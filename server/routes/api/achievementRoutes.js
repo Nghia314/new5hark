@@ -3,7 +3,7 @@ const router = require("express").Router();
 const {
   newAchievement,
   getAchievements,
-} = require("../../controllers/achievementController");
+} = require("../../controllers/activityController");
 
 router.route("/").get(getAchievements).post(newAchievement);
 
