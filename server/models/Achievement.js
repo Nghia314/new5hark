@@ -1,5 +1,4 @@
 const { Schema, model } = require("mongoose");
-// const Activity = require("./Activity");
 
 const achievementSchema = new Schema({
   activity: {
