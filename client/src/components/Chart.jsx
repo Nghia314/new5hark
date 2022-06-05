@@ -17,11 +17,11 @@ function Chart() {
   },
   {
     activity: 'Sleeping',
-    amount: 5,
+    amount: 10,
   },
   {
     activity: 'Video Games',
-    amount: 3,
+    amount: 14,
   },
   {
     activity: 'Jogging',
@@ -69,7 +69,7 @@ function Chart() {
 
       {
         label: 'Weekly',
-        data: [2, 3, 5, 7, 15, 6],
+        data: [2, 3, 5, 7, 6],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
