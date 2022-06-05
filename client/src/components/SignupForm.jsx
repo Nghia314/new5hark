@@ -14,7 +14,7 @@ function SignupForm() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // console.log(formState);
+    console.log(formState);
     try {
       const res = await createUser(formState);
 
@@ -50,6 +50,7 @@ function SignupForm() {
               name="name"
               aria-describedby="emailHelp123"
               placeholder="Name"
+              value={formState.name}
               onChange={handleChange}
             />
           </div>
@@ -65,6 +66,7 @@ function SignupForm() {
 
               name="email"
               placeholder="Email"
+              value={formState.email}
               onChange={handleChange}
             />
           </div>
@@ -79,6 +81,7 @@ function SignupForm() {
 
               name="password"
               placeholder="Password"
+              value={formState.password}
               onChange={handleChange}
             />
           </div>
