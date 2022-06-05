@@ -10,7 +10,7 @@ function Dashboard() {
         <div className="grid md:grid-cols-2 gap-3">
           <div>
             <h1 className="mb-3">Sid's Activities</h1>
-            <div className="grid md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {/* MOCK BUTTON DATA, DELETE LATER */}
               <button className="btn btn-warning b w-full truncate">Walk</button>
               <button className="btn btn-warning w-full truncate">Walk</button>
@@ -24,15 +24,37 @@ function Dashboard() {
             <h1 className="mb-3">Create Activity</h1>
             <div className="input-group">
               <input className="input input-primary input-bordered w-full" type="text" />
-              <button className="btn btn-primary">+</button>
+              <button className="btn btn-primary font-bold">+</button>
             </div>
           </div>
         </div>
-        <div className="card bg-"></div>
+        <div className="card bg-base-100 mt-3">
+          <h2 className="card-header text-neutral p-3 bg-secondary">Activity Bank</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 p-3 gap-3">
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+            <button className="btn btn-default b w-full truncate">Walk</button>
+          </div>
+        </div>
       </div>
       <div className="card md:col-span-4 bg-neutral w-full p-3">
         <h2 className="card-title">My Day</h2>
-        <div className="grid md:grid-cols-2 gap-3 my-3">
+        <div className="grid grid-cols-2 gap-3 my-3">
           {/* MOCK BUTTON DATA, DELETE LATER */}
           <button className="btn btn-secondary w-full truncate">Walk</button>
           <button className="btn btn-secondary w-full truncate">Walk</button>
