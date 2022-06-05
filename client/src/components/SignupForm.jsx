@@ -22,6 +22,7 @@ function SignupForm() {
         throw new Error("Oops, please try again!");
       }
       const { token, user } = await res.json();
+      console.log(token);
 
       Sec.login(token);
     } catch (err) {
@@ -43,12 +44,7 @@ function SignupForm() {
             <input
               type="text"
               className="input input-bordered w-full focus:input-primary"
-              // className="form-control block w-full px-3 py-1.5 m-0
-              //   text-base font-normal text-light
-              //   bg-base-100 bg-clip-padding border-gray-300 rounded transition ease-in-out
-              //   focus:bg-base-100 focus:outline-primary focus:outline-none"
               name="name"
-              aria-describedby="emailHelp123"
               placeholder="Name"
               value={formState.name}
               onChange={handleChange}
@@ -59,11 +55,6 @@ function SignupForm() {
             <input
               type="email"
               className="input input-bordered w-full focus:input-primary"
-              // className="form-control block w-full px-3 py-1.5 m-0
-              //   text-base font-normal text-light
-              //   bg-base-100 bg-clip-padding border-gray-300 rounded transition ease-in-out
-              //   focus:bg-base-100 focus:outline-primary focus:outline-none"
-
               name="email"
               placeholder="Email"
               value={formState.email}
@@ -74,24 +65,13 @@ function SignupForm() {
             <input
               type="password"
               className="input input-bordered w-full focus:input-primary"
-              // className="form-control block w-full px-3 py-1.5 m-0
-              //   text-base font-normal text-light
-              //   bg-base-100 bg-clip-padding border-gray-300 rounded transition ease-in-out
-              //   focus:bg-base-100 focus:outline-primary focus:outline-none"
-
               name="password"
               placeholder="Password"
               value={formState.password}
               onChange={handleChange}
             />
           </div>
-          <button
-            type="submit"
-            className="btn btn-primary w-full"
-            // className="w-full px-6 py-2.5 bg-primary text-white font-medium text-xs leading-tight uppercase rounded shadow-md
-            // hover:bg-blue-700 hover:shadow-lg
-            // focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-          >
+          <button type="submit" className="btn btn-primary w-full">
             Sign up
           </button>
         </form>

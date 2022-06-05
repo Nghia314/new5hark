@@ -1,6 +1,7 @@
 class Security {
   login(tok) {
-    return localStorage.setItem("token", tok);
+    localStorage.setItem("token", tok);
+    window.location.assign("/dashboard");
   }
 }
 export default new Security();
