@@ -4,6 +4,7 @@ const { User } = require("../models");
 const { signToken } = require("../utils/auth");
 
 module.exports = {
+  // create new user
   async newUser(req, res) {
     const user = await User.create(req.body);
 
@@ -13,7 +14,7 @@ module.exports = {
     const token = signToken(user);
     res.json({ token, user });
   },
-
+// get a single user by their id
   async getUsers(req, res) {
     const usrs = await User.find()
       .select({ __v: 0, password: 0 })
