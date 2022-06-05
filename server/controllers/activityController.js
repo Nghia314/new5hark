@@ -1,18 +1,43 @@
-const { Activity } = require("../models");
+const { Activity, User } = require("../models");
 
 module.exports = {
-  newActivity(req, res) {
-    Activity.create(req.body)
-      .then((act) => res.json(act))
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+  async newActivity(req, res) {
+    const newActivity = await Activity.create(req.body);
+
+    if (!newActivity) {
+      res.status(500).json(err);
+    } else {
+      // adds to users createdActivities array
+      const upUser = await User.findOneAndUpdate(
+        { _id: req.body.createdBy },
+        { $addToSet: { createdActivities: newActivity._id } },
+        { runValidators: true, new: true }
+      );
+
+      // if user found all good, otherwise activity still added
+      !upUser
+        ? res.status(202).json({
+            activity: newActivity,
+            message: "Activity added but no User with given ID found",
+          })
+        : res.json(newActivity);
+    }
   },
 
-  getActivities(req, res) {
-    Activity.find()
-      .then((acts) => res.json(acts))
-      .catch((err) => res.status(500).json(err));
+  async getActivities(req, res) {
+    const acts = await Activity.find()
+      .select({ __v: 0 })
+      .populate({
+        path: "createdBy",
+        select: {
+          __v: 0,
+          createdActivities: 0,
+          password: 0,
+          achievements: 0,
+          _id: 0,
+        },
+      });
+
+    !acts ? res.status(404).json("ERR") : res.json(acts);
   },
 };

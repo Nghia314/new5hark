@@ -1,18 +1,26 @@
 const { User } = require("../models");
+const { signToken } = require("../utils/auth");
 
 module.exports = {
-  newUser(req, res) {
-    User.create(req.body)
-      .then((act) => res.json(act))
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+  async newUser(req, res) {
+    const user = await User.create(req.body);
+
+    if (!user) {
+      return res.status(400).json({ message: "Please try again" });
+    }
+    const token = signToken(user);
+    res.json({ token, user });
   },
 
-  getUsers(req, res) {
-    User.find()
-      .then((acts) => res.json(acts))
-      .catch((err) => res.status(500).json(err));
+  async getUsers(req, res) {
+    const usrs = await User.find()
+      .select({ __v: 0, password: 0 })
+      .populate({
+        path: "createdActivities",
+        select: { __v: 0, createdBy: 0, _id: 0 },
+      })
+      .populate({ path: "achievements", select: { __v: 0 } });
+
+    !usrs ? res.status(404).json("ERR") : res.json(usrs);
   },
 };

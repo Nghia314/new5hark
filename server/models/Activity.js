@@ -17,12 +17,4 @@ const activitySchema = new Schema({
 
 const Activity = model("activity", activitySchema);
 
-// Activity.create(
-//   {
-//     name: "brush teeth",
-//     description: "do this every day",
-//   },
-//   (err) => (err ? handleError(err) : console.log("created"))
-// );
-
 module.exports = Activity;
