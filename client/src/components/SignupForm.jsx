@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { createUser } from "../utils/API";
-import Sec from "../utils/security";
+import Security from "../utils/security";
 
 function SignupForm() {
   const [formState, setForm] = useState({ name: "", email: "", password: "" });
