@@ -3,14 +3,26 @@ import React from "react";
 function CreateActivityForm() {
   return (
     <div>
-      <div className="card max-w-3xl p-3">
-        <div className="card-body border-solid border-2 border-sky-800 bg-slate-800  rounded">
-          <h2 className="text-center text-3xl font-bold">
-            Monthly Chart Summary
-          </h2>
-          <Chart />
+      <h1 className="mb-3">Create Activity</h1>
+      {/* <Form / handleNewActivityForm></Form> */}
+      <form>
+        <div className="input-group">
+          <input
+            className="input input-primary input-bordered w-full"
+            type="text"
+            placeholder="Activity name"
+          />
+          <button type="submit" className="btn btn-primary font-bold">
+            +
+          </button>
         </div>
-      </div>
+
+        <input
+          className="input input-primary input-bordered w-full"
+          type="text"
+          placeholder="Description"
+        />
+      </form>
     </div>
   );
 }
