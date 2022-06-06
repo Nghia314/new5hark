@@ -11,19 +11,16 @@ function ComponentTester() {
   const obj = {
     _id: 12341234,
     name: "walk",
-    description: "i like to walk at night"
-  }
+    description: "i like to walk at night",
+  };
 
   return (
     <>
       <h1 className="text-center text-3xl font-bold">Test Components Here!</h1>
       {/* <Loginform />
       <SignupForm /> */}
-      <Button 
-      activity={obj.name}
-      onClick={itWorks}
-      color={"primary"}
-      />
+      <Button activity={obj.name} onClick={itWorks} color={"primary"} />
+      <Loginform />
     </>
   );
 }
