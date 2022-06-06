@@ -28,7 +28,6 @@ function Dashboard() {
   const [communityActivities, setCommunityActivities] = useState([]);
 
   // array for populating the user activities section
-  const [userActivities, setUserActivities] = useState([]);
 
   // happens on page load, but may need to also happen when userActivities change
   useEffect(() => {
@@ -48,52 +47,27 @@ function Dashboard() {
       }
     };
 
-    const userDataFetch = async () => {
-      try {
-        const token = Security.loggedIn() ? Security.getToken() : null;
-
-        if (!token) {
-          alert("something went wrong with the token");
-          return false;
-        }
-
-        const res = await getUserData(token);
-
-        if (!res.ok) {
-          alert("Something Went Wrong with getting user data");
-        }
-
-        const data = await res.json();
-        // console.log(data);
-        // console.log(data.user.createdActivities);
-        setUserActivities(data.user.createdActivities);
-      } catch (err) {
-        alert("Something Went Wrong with the userdatafetch function");
-      }
-    };
-
-    userDataFetch();
     communityDataFetch();
   }, []);
 
-  const handleNewActivityForm = async (e) => {
-    e.preventDefault();
-    const token = Security.loggedIn() ? Security.getToken() : null;
-    if (!token) {
-      return false;
-    }
-
-    try {
-      const res = await createActivity(newActivityFormState, token);
-      if (!res.ok) {
-        throw new Error("Something Went Wrong");
-      }
-      const newActivity = await res.json();
-      setUserActivities(newActivity);
-    } catch (err) {
-      alert("Something Went Wrong");
-    }
-  };
+  // const handleNewActivityForm = async (e) => {
+  //   e.preventDefault();
+  //   const token = Security.loggedIn() ? Security.getToken() : null;
+  //   if (!token) {
+  //     return false;
+  //   }
+  //
+  //   try {
+  //     const res = await createActivity(newActivityFormState, token);
+  //     if (!res.ok) {
+  //       throw new Error("Something Went Wrong");
+  //     }
+  //     const newActivity = await res.json();
+  //     setUserActivities(newActivity);
+  //   } catch (err) {
+  //     alert("Something Went Wrong");
+  //   }
+  // };
   return (
     <>
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3 text-center">
@@ -102,12 +76,12 @@ function Dashboard() {
           <div className="grid md:grid-cols-2 gap-3">
             {/* comment */}
             {/* this should be the user activities component, being passed userActivities stateful value */}
-            <UserActivities userActivities={userActivities} />
+            <UserActivities />
             {/* create activity form */}
             <div>
               <h1 className="mb-3">Create Activity</h1>
               {/* <Form / handleNewActivityForm></Form> */}
-              <form onSubmit={handleNewActivityForm}>
+              <form>
                 <div className="input-group">
                   <input
                     className="input input-primary input-bordered w-full"
