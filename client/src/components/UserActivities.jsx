@@ -6,25 +6,12 @@ import Button from "../components/Button";
 
 function UserActivities({ userActivities }) {
   console.log(userActivities);
+  console.log(userActivities[0]);
   return (
     <div>
       <h1 className="mb-3">BOOPY's Activities</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {/* MOCK BUTTON DATA, DELETE LATER */}
-
-        {userActivities.map((activity) => {
-          <Button
-            id={activity._id}
-            name={activity.name}
-            description={activity.description}
-          />;
-        })}
-        {/* <button className="btn btn-warning b w-full truncate">Walk</button> */}
-        {/* <button className="btn btn-warning w-full truncate">Walk</button> */}
-        {/* <button className="btn btn-warning w-full truncate">Walk</button> */}
-        {/* <button className="btn btn-warning w-full truncate">Walk</button> */}
-        {/* <button className="btn btn-warning w-full truncate">Walk</button> */}
-        {/* MOCK BUTTON DATA, DELETE LATER */}
+        <Button activity={userActivities[0].name} color={"warning"} />
       </div>
     </div>
   );
