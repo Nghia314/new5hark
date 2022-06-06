@@ -16,14 +16,20 @@ module.exports = {
   },
 
   async getOneUser(req, res) {
-    const usr = await User.findOne({
+    const user = await User.findOne({
       _id: req.user._id,
-    });
-    if (!usr) {
+    })
+      .select({ __v: 0, password: 0 })
+      .populate({
+        path: "createdActivities",
+        select: { __v: 0, createdBy: 0, _id: 0 },
+      })
+      .populate({ path: "achievements", select: { __v: 0 } });
+    if (!user) {
       return res.status(400).json({ message: "No user with id found" });
     }
-    const token = signToken(usr);
-    res.json({ token, usr });
+    const token = signToken(user);
+    res.json({ token, user });
   },
 
   async login(req, res) {
