@@ -39,6 +39,17 @@ function UserActivities() {
     userDataFetch();
   }, []);
 
+  if (userActivities.length === 0) {
+    return (
+      <div>
+        <h1 className="mb-3">Your Created Activities</h1>
+        <div>
+          <h1 className="text-3xl">You haven't made any activities yet</h1>
+          <h1 className="text-xl">Fill out the form to add an activity</h1>
+        </div>
+      </div>
+    );
+  }
   return (
     <div>
       <h1 className="mb-3">Your Created Activities</h1>

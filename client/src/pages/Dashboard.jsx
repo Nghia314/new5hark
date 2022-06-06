@@ -3,12 +3,7 @@ import React, { useState, useEffect } from "react";
 
 // import utils
 import Security from "../utils/security";
-import {
-  fetchAllActivities,
-  createActivity,
-  // createAchievement,
-  getUserData,
-} from "../utils/API";
+import { fetchAllActivities } from "../utils/API";
 
 //import components
 import ActivityBank from "../components/ActivityBank";
