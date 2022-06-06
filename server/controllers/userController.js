@@ -22,7 +22,7 @@ module.exports = {
       .select({ __v: 0, password: 0 })
       .populate({
         path: "createdActivities",
-        select: { __v: 0, createdBy: 0, _id: 0 },
+        select: { __v: 0, createdBy: 0 },
       })
       .populate({ path: "achievements", select: { __v: 0 } });
     if (!user) {
@@ -59,7 +59,7 @@ module.exports = {
       .select({ __v: 0, password: 0 })
       .populate({
         path: "createdActivities",
-        select: { __v: 0, createdBy: 0, _id: 0 },
+        select: { __v: 0, createdBy: 0 },
       })
       .populate({ path: "achievements", select: { __v: 0 } });
 
