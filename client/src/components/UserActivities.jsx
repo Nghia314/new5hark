@@ -30,8 +30,6 @@ function UserActivities() {
         }
 
         const data = await res.json();
-        // console.log(data);
-        console.log(data.user.createdActivities);
         setUserActivities(data.user.createdActivities);
       } catch (err) {
         alert("Something Went Wrong with the userdatafetch function");
@@ -43,7 +41,7 @@ function UserActivities() {
 
   return (
     <div>
-      <h1 className="mb-3">BOOPY's Activities</h1>
+      <h1 className="mb-3">Your Created Activities</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
         {/* <Button activity={"something"} color={"primary"} /> */}
         {userActivities.map((activity) => (

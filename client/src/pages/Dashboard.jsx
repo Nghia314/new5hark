@@ -13,11 +13,14 @@ import {
 //import components
 import ActivityBank from "../components/ActivityBank";
 import UserActivities from "../components/UserActivities";
+import CreateActivityForm from "../components/CreateActivityForm";
 
 function Dashboard() {
   // state for activities to be added to the my day box
   // will eventually get passed into the myDay Component
   const [selectedActivities, setSelected] = useState([]);
+
+  const [myDayActivities, setMyDayActivities] = useState([]);
 
   // state for handling the new activity form
   const [newActivityFormState, setNewActivityForm] = useState({
@@ -78,21 +81,7 @@ function Dashboard() {
             {/* this should be the user activities component, being passed userActivities stateful value */}
             <UserActivities />
             {/* create activity form */}
-            <div>
-              <h1 className="mb-3">Create Activity</h1>
-              {/* <Form / handleNewActivityForm></Form> */}
-              <form>
-                <div className="input-group">
-                  <input
-                    className="input input-primary input-bordered w-full"
-                    type="text"
-                  />
-                  <button type="submit" className="btn btn-primary font-bold">
-                    +
-                  </button>
-                </div>
-              </form>
-            </div>
+            <CreateActivityForm />
           </div>
 
           <div className="card bg-base-100 mt-3">
