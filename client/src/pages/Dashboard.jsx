@@ -1,5 +1,7 @@
+// import hooks
 import React, { useState, useEffect } from "react";
 
+// import utils
 import Security from "../utils/security";
 import {
   fetchAllActivities,
@@ -7,6 +9,10 @@ import {
   // createAchievement,
   getUserData,
 } from "../utils/API";
+
+//import components
+import ActivityBank from "../components/ActivityBank";
+import UserActivities from "../components/UserActivities";
 
 function Dashboard() {
   // state for activities to be added to the my day box
@@ -35,7 +41,7 @@ function Dashboard() {
         }
 
         const data = await res.json();
-        console.log(data);
+        // console.log(data);
         setCommunityActivities(data);
       } catch (err) {
         alert("Something went wrong with the communityDataFetch");
@@ -59,12 +65,11 @@ function Dashboard() {
 
         const data = await res.json();
         // console.log(data);
-        console.log(data.user.createdActivities);
+        // console.log(data.user.createdActivities);
         setUserActivities(data.user.createdActivities);
       } catch (err) {
         alert("Something Went Wrong with the userdatafetch function");
       }
-      // console.log(userActivities);
     };
 
     userDataFetch();
@@ -97,30 +102,7 @@ function Dashboard() {
           <div className="grid md:grid-cols-2 gap-3">
             {/* comment */}
             {/* this should be the user activities component, being passed userActivities stateful value */}
-            <div>
-              <h1 className="mb-3">Sid's Activities</h1>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                {/* MOCK BUTTON DATA, DELETE LATER */}
-
-                <button className="btn btn-warning b w-full truncate">
-                  Walk
-                </button>
-                <button className="btn btn-warning w-full truncate">
-                  Walk
-                </button>
-                <button className="btn btn-warning w-full truncate">
-                  Walk
-                </button>
-                <button className="btn btn-warning w-full truncate">
-                  Walk
-                </button>
-                <button className="btn btn-warning w-full truncate">
-                  Walk
-                </button>
-                {/* MOCK BUTTON DATA, DELETE LATER */}
-              </div>
-            </div>
-
+            <UserActivities userActivities={userActivities} />
             {/* create activity form */}
             <div>
               <h1 className="mb-3">Create Activity</h1>

@@ -37,7 +37,6 @@ module.exports = {
           createdActivities: 0,
           password: 0,
           achievements: 0,
-          _id: 0,
         },
       });
 
