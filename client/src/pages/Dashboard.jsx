@@ -59,12 +59,12 @@ function Dashboard() {
 
         const data = await res.json();
         // console.log(data);
-        // console.log(data.user.createdActivities);
+        console.log(data.user.createdActivities);
         setUserActivities(data.user.createdActivities);
-        console.log(userActivities);
       } catch (err) {
         alert("Something Went Wrong with the userdatafetch function");
       }
+      // console.log(userActivities);
     };
 
     userDataFetch();
@@ -84,7 +84,7 @@ function Dashboard() {
         throw new Error("Something Went Wrong");
       }
       const newActivity = await res.json();
-      setUserActivities(newActivity, ...userActivities);
+      setUserActivities(newActivity);
     } catch (err) {
       alert("Something Went Wrong");
     }
@@ -95,6 +95,8 @@ function Dashboard() {
         <div className="card md:col-span-8 bg-neutral w-full p-3 text-center">
           <h2 className="card-header text-3xl font-bold">Build your Day</h2>
           <div className="grid md:grid-cols-2 gap-3">
+            {/* comment */}
+            {/* this should be the user activities component, being passed userActivities stateful value */}
             <div>
               <h1 className="mb-3">Sid's Activities</h1>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -118,8 +120,11 @@ function Dashboard() {
                 {/* MOCK BUTTON DATA, DELETE LATER */}
               </div>
             </div>
+
+            {/* create activity form */}
             <div>
               <h1 className="mb-3">Create Activity</h1>
+              {/* <Form / handleNewActivityForm></Form> */}
               <form onSubmit={handleNewActivityForm}>
                 <div className="input-group">
                   <input
@@ -133,11 +138,15 @@ function Dashboard() {
               </form>
             </div>
           </div>
+
           <div className="card bg-base-100 mt-3">
             <h2 className="card-header text-neutral p-3 bg-secondary">
               Activity Bank
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 p-3 gap-3">
+              {/* activities.map((activity) => { */}
+              {/*   <Button / props> */}
+              {/* }) */}
               <button className="btn btn-default b w-full truncate">
                 Walk
               </button>
@@ -194,7 +203,11 @@ function Dashboard() {
               </button>
             </div>
           </div>
+          {/* end of communty activity div  */}
         </div>
+        {/* end of left side of page */}
+
+        {/* begin right side */}
         <div className="card md:col-span-4 bg-neutral w-full p-3">
           <h2 className="card-title">My Day</h2>
           <div className="grid grid-cols-2 gap-3 my-3">
