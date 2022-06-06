@@ -93,7 +93,7 @@ function Chart() {
   };
 
   return (
-    <Doughnut data={data} />
+    <Doughnut className="max-h-screen" data={data} />
   );
 }
 
