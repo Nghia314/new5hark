@@ -18,6 +18,16 @@ export const loginUser = (data) => {
   });
 };
 
+export const getUserData = (token) => {
+  return fetch("api/users/data", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const createActivity = (data, token) => {
   return fetch("api/activities", {
     method: "POST",
@@ -32,6 +42,17 @@ export const createActivity = (data, token) => {
 export const fetchAllActivities = () => {
   return fetch("api/activities", {
     method: "GET",
+  });
+};
+
+export const createAchievement = (data, token) => {
+  return fetch("api/achievements", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
   });
 };
 
