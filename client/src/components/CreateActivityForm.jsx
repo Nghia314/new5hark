@@ -36,6 +36,15 @@ function CreateActivityForm() {
       <h1 className="mb-3">Create Activity</h1>
       {/* <Form / handleNewActivityForm></Form> */}
       <form onChange={handleFormChange} onSubmit={handleFormSubmit}>
+        {/* <div className="input-group"> */}
+        <input
+          className="input input-primary input-bordered w-full"
+          type="text"
+          placeholder="Activity name"
+          name="name"
+        />
+        {/* </div> */}
+
         <input
           className="input input-primary mb-3 input-bordered w-full"
           type="text"
