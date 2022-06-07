@@ -18,7 +18,8 @@ function CreateActivityForm() {
         alert("something went wrong while creating activity");
       }
       const newAct = await res.json();
-      alert("New Activity Created");
+      // alert("New Activity Created");
+      document.location.reload();
     } catch (err) {
       alert("Something went wrong with whole function");
     }
@@ -35,6 +36,15 @@ function CreateActivityForm() {
       <h1 className="mb-3">Create Activity</h1>
       {/* <Form / handleNewActivityForm></Form> */}
       <form onChange={handleFormChange} onSubmit={handleFormSubmit}>
+        {/* <div className="input-group"> */}
+        <input
+          className="input input-primary input-bordered w-full"
+          type="text"
+          placeholder="Activity name"
+          name="name"
+        />
+        {/* </div> */}
+
         <input
           className="input input-primary mb-3 input-bordered w-full"
           type="text"
