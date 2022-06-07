@@ -12,6 +12,12 @@ function CreateActivityForm({ handleFormChange, handleFormSubmit }) {
         <input
           className="input input-primary mb-3 input-bordered w-full"
           type="text"
+          placeholder="Activity Name"
+          name="name"
+        />
+        <input
+          className="input input-primary mb-3 input-bordered w-full"
+          type="text"
           placeholder="Description"
           name="description"
         />
