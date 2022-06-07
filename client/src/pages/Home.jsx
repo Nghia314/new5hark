@@ -4,7 +4,7 @@ import Loginform from "../components/Loginform";
 import styled, { keyframes } from "styled-components";
 import { PowerBtn } from "../components/AllSvgs";
 
-const maincontainer = styled.div`
+const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
   width: 100vw;
   height: 100vh;
@@ -20,7 +20,7 @@ const maincontainer = styled.div`
   }
 `;
 
-const container = styled.div`
+const Container = styled.div`
 padding: 2rem`;
 
 const rotate = keyframes`
@@ -31,7 +31,7 @@ to {
   transform: rotate(360deg);
 }`;
 
-const center = styled.button`
+const Center = styled.button`
   position: absolute;
   top: ${(props) => (props.click ? "85%" : "50%")};
   left: ${(props) => (props.click ? "92%" : "50%")};
@@ -53,6 +53,18 @@ const center = styled.button`
     padding-top: 1rem;
   }
 `;
+const DarkDiv = styled.div`
+position: absolute;
+top: 0;
+background-color: #000;
+bottom: 0;
+right: 50%;
+width: ${props => props.click ? '50%' : '0%'};
+height: ${props => props.click ? '100%' : '0%'};
+z-index:1;
+transition: height 0.5s ease, width 1s ease 0.5s;
+`
+
 
 const Home = () => {
   const [click, setClick] = useState(false);
@@ -60,11 +72,11 @@ const Home = () => {
   const handleClick = () => setClick(!click);
 
   return (
-    <maincontainer>
-      <darkdiv click={click} />
-      <container>
+    <Maincontainer>
+      <DarkDiv click={click} />
+      <Container>
         <PowerButton />
-        <center click={click}>
+        <Center click={click}>
           <PowerBtn
             onClick={() => handleClick()}
             width={click ? 120 : 200}
@@ -72,10 +84,10 @@ const Home = () => {
             fill="currentColor"
           />
           <span>Click here</span>
-        </center>
-      </container>
+        </Center>
+      </Container>
       {click ? <Loginform click={click} /> : null}
-    </maincontainer>
+    </Maincontainer>
   );
 };
 
