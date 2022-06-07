@@ -10,12 +10,11 @@ function ActivityBank({ communityActivities }) {
     const getAllActivities = async () => {
       try {
         const res = await fetchAllActivities();
-        console.log(res);
         return res;
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     getAllActivities();
   }, []);
 
