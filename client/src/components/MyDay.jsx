@@ -16,15 +16,16 @@ function MyDay({ myDayActivities }) {
     );
   }
 
+  const color = "secondary";
   return (
     <div className="card bg-neutral w-full p-3">
       <h2 className="car-header text-2xl ">My Day</h2>
       <div className="grid grid-cols-2 gap-3 my-3">
         {myDayActivities.map((activity) => (
-          <Button activity={activity} color={"primary"} />
+          <Button key={activity._id} activity={activity} color={color} />
         ))}
       </div>
-      <button className="btn btn-primary">Start my Day!</button>
+      <button className="btn btn-warning">Start my Day!</button>
     </div>
   );
 }

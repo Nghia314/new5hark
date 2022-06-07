@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
+// import utils
 import { createUser } from "../utils/API";
 import Security from "../utils/security";
 
