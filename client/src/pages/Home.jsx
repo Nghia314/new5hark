@@ -1,10 +1,19 @@
 import React from "react";
+import PowerButton from "../components/Button";
+import Loginform from "../components/Loginform";
 
-function Home() {
+const Home = () => {
+
   return (
     <>
-      <h1 className="text-3xl">homeroute</h1>
+    <center>
+      <PowerButton width={150} height={150} />
+      <span>click here</span>
+
+    </center>
+    
     </>
+    
   );
 }
 
