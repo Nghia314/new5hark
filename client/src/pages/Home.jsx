@@ -53,18 +53,6 @@ const Center = styled.button`
     padding-top: 1rem;
   }
 `;
-const DarkDiv = styled.div`
-position: absolute;
-top: 0;
-background-color: #000;
-bottom: 0;
-right: 50%;
-width: ${props => props.click ? '50%' : '0%'};
-height: ${props => props.click ? '100%' : '0%'};
-z-index:1;
-transition: height 0.5s ease, width 1s ease 0.5s;
-`
-
 
 const Home = () => {
   const [click, setClick] = useState(false);
@@ -73,7 +61,7 @@ const Home = () => {
 
   return (
     <Maincontainer>
-      <DarkDiv click={click} />
+     
       <Container>
         <PowerButton />
         <Center click={click}>
