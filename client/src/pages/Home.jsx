@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PowerButton from "../components/Button";
 import Loginform from "../components/Loginform";
 import styled, { keyframes } from "styled-components";
-import { motion } from "framer-motion";
 import { PowerBtn } from "../components/AllSvgs";
 
 const maincontainer = styled.div`
@@ -20,9 +19,9 @@ const maincontainer = styled.div`
     font-weight: 500;
   }
 `;
+
 const container = styled.div`
-  padding: 2rem;
-`;
+padding: 2rem`;
 
 const rotate = keyframes`
 from {
