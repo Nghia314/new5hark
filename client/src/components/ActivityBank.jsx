@@ -7,7 +7,16 @@ import Button from "./Button.jsx";
 // <Button {activity}, including the color/>
 function ActivityBank({ communityActivities }) {
   useEffect(() => {
-    
+    const getAllActivities = async () => {
+      try {
+        const res = await fetchAllActivities();
+        console.log(res);
+        return res;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getAllActivities();
   }, []);
 
   return (

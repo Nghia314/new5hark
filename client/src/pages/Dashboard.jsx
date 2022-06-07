@@ -74,9 +74,9 @@ function Dashboard() {
           <div className="grid md:grid-cols-2 gap-3">
             {/* comment */}
             {/* this should be the user activities component, being passed userActivities stateful value */}
-            <UserActivities />
+            <UserActivities className="md:col-span-8" />
             {/* create activity form */}
-            <CreateActivityForm />
+            <CreateActivityForm className="md:col-span-4" />
           </div>
           <ActivityBank />
           {/* end of communty activity div  */}
