@@ -65,8 +65,6 @@ const Home = () => {
   const handleClick = () => setClick(!click);
 
   return (
-
-
     <Maincontainer >
       <Container>
         {/* calling Button function */}
