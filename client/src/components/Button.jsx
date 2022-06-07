@@ -1,14 +1,12 @@
 import React from "react";
 
-function Button({ onClick, color, activity }) {
+function Button({ color, activity, handleMoveToMyDay }) {
   return (
-    // <div className="tooltip" datatip={activity.description}>
     <button onClick={onClick} className={`btn btn-${color} w-full`}>
       <p className="line-clamp-2">
-        {activity}
+      {activity.name}
       </p>
     </button>
-    // </div>
   );
 }
 

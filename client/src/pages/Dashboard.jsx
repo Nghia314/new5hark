@@ -3,7 +3,12 @@ import React, { useState, useEffect } from "react";
 
 // import utils
 import Security from "../utils/security";
-import { fetchAllActivities, getUserData, createActivity } from "../utils/API";
+import {
+  fetchAllActivities,
+  getUserData,
+  createActivity,
+  createAchievement,
+} from "../utils/API";
 
 //import components
 import Navbar from "../components/Navbar";
@@ -14,24 +19,63 @@ import MyDay from "../components/MyDay";
 
 function Dashboard() {
   // state for activities to be added to the my day box
-  // will be passed into the myDay Component
+  // passed into the myDay Component
   const [myDayActivities, setMyDayActivities] = useState([]);
 
   // state for all activities fetch
+  // passed to ActivityBank
   const [allActivities, setAllActivities] = useState([]);
 
+  // state for all user activities
+  // passed to UserActivities
   const [userActivities, setUserActivities] = useState([]);
 
+  // newactivity form state
   const [formState, setForm] = useState({});
 
+  // handlers for forms and bettons
   const handleFormChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
     setForm({ ...formState, [name]: value });
   };
 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const token = Security.loggedIn() ? Security.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    try {
+      const res = await createActivity(formState, token);
+      if (!res.ok) {
+        alert("something went wrong while creating activity");
+      }
+      const newAct = await res.json();
+      // console.log(newAct);
+      setUserActivities([newAct, ...userActivities]);
+      setAllActivities([newAct, ...allActivities]);
+    } catch (err) {
+      alert("Something went wrong with whole function");
+    }
+  };
+
+  const handleMoveToMyDay = (newAct) => {
+    // console.log("click");
+    if (!myDayActivities.includes(newAct)) {
+      setMyDayActivities([newAct, ...myDayActivities]);
+    } else {
+      alert("You can only add an activity once!");
+    }
+  };
+
+  const handleStartMyDay = async () => {
+    console.log("click");
+  };
+
   // happens on page load, but may need to also happen when userActivities change
   useEffect(() => {
+    // gets all users's activities
     const allDataFetch = async () => {
       try {
         const res = await fetchAllActivities();
@@ -47,6 +91,7 @@ function Dashboard() {
       }
     };
 
+    // gets current user's activities
     const userDataFetch = async () => {
       try {
         const token = Security.loggedIn() ? Security.getToken() : null;
@@ -74,28 +119,6 @@ function Dashboard() {
     userDataFetch();
   }, []);
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    const token = Security.loggedIn() ? Security.getToken() : null;
-    if (!token) {
-      return false;
-    }
-    try {
-      const res = await createActivity(formState, token);
-      if (!res.ok) {
-        alert("something went wrong while creating activity");
-      }
-      const newAct = await res.json();
-      console.log(newAct);
-      setUserActivities([newAct, ...userActivities]);
-      setAllActivities([newAct, ...allActivities]);
-    } catch (err) {
-      alert("Something went wrong with whole function");
-    }
-  };
-
-  // const handleMoveToMyDay = () => {};
-
   return (
     <>
       <Navbar />
@@ -103,13 +126,11 @@ function Dashboard() {
         <div className="card md:col-span-8 bg-neutral w-full p-3 text-center">
           <h2 className="card-header text-3xl font-bold">Build your Day</h2>
           <div className="grid md:grid-cols-2 gap-3">
-            {/* comment */}
-            {/* this should be the user activities component, being passed userActivities stateful value */}
             <UserActivities
               className="md:col-span-8"
               userActivities={userActivities}
+              handleMoveToMyDay={handleMoveToMyDay}
             />
-            {/* create activity form */}
             <CreateActivityForm
               handleFormChange={handleFormChange}
               handleFormSubmit={handleFormSubmit}
@@ -118,10 +139,14 @@ function Dashboard() {
           </div>
           <ActivityBank
             allActivities={allActivities}
+            handleMoveToMyDay={handleMoveToMyDay}
           />
         </div>
         <div className="md:col-span-4">
-          <MyDay />
+          <MyDay
+            myDayActivities={myDayActivities}
+            handleStartMyDay={handleStartMyDay}
+          />
         </div>
       </div>
     </>

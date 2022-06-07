@@ -3,7 +3,7 @@ import React from "react";
 //import components
 import Button from "../components/Button";
 
-function UserActivities({ userActivities }) {
+function UserActivities({ userActivities, handleMoveToMyDay }) {
   if (userActivities.length === 0) {
     return (
       <div>
@@ -15,16 +15,18 @@ function UserActivities({ userActivities }) {
       </div>
     );
   }
+
+  const color = "warning";
   return (
     <div>
       <h1 className="mb-3">Your Created Activities</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {/* <Button activity={"something"} color={"primary"} /> */}
         {userActivities.map((activity) => (
           <Button
-            activity={activity.name}
+            activity={activity}
             key={activity._id}
-            color={"secondary"}
+            color={color}
+            handleMoveToMyDay={handleMoveToMyDay}
           />
         ))}
       </div>

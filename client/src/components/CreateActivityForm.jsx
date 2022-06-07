@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 
-import Security from "../utils/security";
 
 function CreateActivityForm({ handleFormChange, handleFormSubmit }) {
   return (
