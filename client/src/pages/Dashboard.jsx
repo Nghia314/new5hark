@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 // import utils
 import Security from "../utils/security";
-import { fetchAllActivities } from "../utils/API";
+import { fetchAllActivities, getUserData, createActivity } from "../utils/API";
 
 //import components
 import Navbar from "../components/Navbar";
@@ -20,6 +20,16 @@ function Dashboard() {
   // state for all activities fetch
   const [communityActivities, setCommunityActivities] = useState([]);
 
+  const [userActivities, setUserActivities] = useState([]);
+
+  const [formState, setForm] = useState({});
+
+  const handleFormChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setForm({ ...formState, [name]: value });
+  };
+
   // happens on page load, but may need to also happen when userActivities change
   useEffect(() => {
     const communityDataFetch = async () => {
@@ -31,36 +41,63 @@ function Dashboard() {
         }
 
         const data = await res.json();
-        // console.log(data);
         setCommunityActivities(data);
       } catch (err) {
         alert("Something went wrong with the communityDataFetch");
       }
     };
 
+    const userDataFetch = async () => {
+      try {
+        const token = Security.loggedIn() ? Security.getToken() : null;
+
+        if (!token) {
+          alert("something went wrong with the token");
+          return false;
+        }
+
+        const res = await getUserData(token);
+
+        if (!res.ok) {
+          alert("Something Went Wrong with getting user data");
+        }
+
+        const data = await res.json();
+        // console.log(data.user.createdActivities);
+        setUserActivities(data.user.createdActivities);
+      } catch (err) {
+        alert("Something Went Wrong with the userdatafetch function");
+      }
+    };
+
+    userDataFetch();
     communityDataFetch();
   }, []);
 
-  const handleMoveToMyDay = () => {};
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const token = Security.loggedIn() ? Security.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    try {
+      const res = await createActivity(formState, token);
+      if (!res.ok) {
+        alert("something went wrong while creating activity");
+      }
+      const newAct = await res.json();
+      debugger;
+      console.log(newAct);
+      debugger;
+      setUserActivities([newAct, ...userActivities]);
+      debugger;
+    } catch (err) {
+      alert("Something went wrong with whole function");
+    }
+  };
 
-  // const handleNewActivityForm = async (e) => {
-  //   e.preventDefault();
-  //   const token = Security.loggedIn() ? Security.getToken() : null;
-  //   if (!token) {
-  //     return false;
-  //   }
-  //
-  //   try {
-  //     const res = await createActivity(newActivityFormState, token);
-  //     if (!res.ok) {
-  //       throw new Error("Something Went Wrong");
-  //     }
-  //     const newActivity = await res.json();
-  //     setUserActivities(newActivity);
-  //   } catch (err) {
-  //     alert("Something Went Wrong");
-  //   }
-  // };
+  // const handleMoveToMyDay = () => {};
+
   return (
     <>
       <Navbar />
@@ -70,10 +107,16 @@ function Dashboard() {
           <div className="grid md:grid-cols-2 gap-3">
             {/* comment */}
             {/* this should be the user activities component, being passed userActivities stateful value */}
-            <UserActivities className="md:col-span-8" />
+            <UserActivities
+              className="md:col-span-8"
+              userActivities={userActivities}
+            />
             {/* create activity form */}
-            <CreateActivityForm className="md:col-span-4" />
-            <UserActivities />
+            <CreateActivityForm
+              handleFormChange={handleFormChange}
+              handleFormSubmit={handleFormSubmit}
+              className="md:col-span-4"
+            />
           </div>
           <ActivityBank />
           {/* end of communty activity div  */}
