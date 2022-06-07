@@ -77,7 +77,7 @@ const Home = () => {
           />
           <span>Click here</span>
         </Center>
-      </Container>
+      </Container> 
       {click ? <Loginform click={click} /> : null}
     </Maincontainer>
   );
