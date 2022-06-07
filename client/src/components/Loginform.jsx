@@ -64,7 +64,7 @@ function Loginform() {
           <p className="text-gray-800 mt-6 text-center">
             Not a member?{" "}
             <a
-            to="/SignupForm"
+            href="/login"
             className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">
               Resgister
             </a>
