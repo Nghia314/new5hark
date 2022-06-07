@@ -94,11 +94,9 @@ function Dashboard() {
     }
   };
 
-  const handleMoveToMyDay = (e) => {
-    e.preventDefault();
+  const handleMoveToMyDay = (newAct) => {
     console.log("click");
-    console.log(e.target)
-    // setMyDayActivities()
+    setMyDayActivities([newAct, ...myDayActivities]);
   };
 
   return (
@@ -125,11 +123,10 @@ function Dashboard() {
           <ActivityBank
             allActivities={allActivities}
             handleMoveToMyDay={handleMoveToMyDay}
-
           />
         </div>
         <div className="md:col-span-4">
-          <MyDay />
+          <MyDay myDayActivities={myDayActivities} />
         </div>
       </div>
     </>

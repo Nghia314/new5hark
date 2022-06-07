@@ -15,6 +15,7 @@ function UserActivities({ userActivities, handleMoveToMyDay }) {
       </div>
     );
   }
+
   return (
     <div>
       <h1 className="mb-3">Your Created Activities</h1>
@@ -26,7 +27,6 @@ function UserActivities({ userActivities, handleMoveToMyDay }) {
             key={activity._id}
             color={"secondary"}
             handleMoveToMyDay={handleMoveToMyDay}
-
           />
         ))}
       </div>
