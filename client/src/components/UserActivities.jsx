@@ -1,44 +1,9 @@
-import React, { useEffect, useState } from "react";
-
-//import utils
-import Security from "../utils/security";
-import { getUserData } from "../utils/API";
+import React from "react";
 
 //import components
 import Button from "../components/Button";
 
-function UserActivities() {
-  function itWorks() {
-    console.log("it works");
-  }
-  const [userActivities, setUserActivities] = useState([]);
-
-  useEffect(() => {
-    const userDataFetch = async () => {
-      try {
-        const token = Security.loggedIn() ? Security.getToken() : null;
-
-        if (!token) {
-          alert("something went wrong with the token");
-          return false;
-        }
-
-        const res = await getUserData(token);
-
-        if (!res.ok) {
-          alert("Something Went Wrong with getting user data");
-        }
-
-        const data = await res.json();
-        setUserActivities(data.user.createdActivities);
-      } catch (err) {
-        alert("Something Went Wrong with the userdatafetch function");
-      }
-    };
-
-    userDataFetch();
-  }, []);
-
+function UserActivities({ userActivities }) {
   if (userActivities.length === 0) {
     return (
       <div>
