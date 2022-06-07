@@ -25,7 +25,6 @@ function UserActivities({ userActivities }) {
             activity={activity.name}
             key={activity._id}
             color={"secondary"}
-            onClick={itWorks}
           />
         ))}
       </div>
