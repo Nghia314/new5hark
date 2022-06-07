@@ -4,6 +4,14 @@ import Loginform from "../components/Loginform";
 import styled, {keyframes} from "styled-components"
 import {motion } from 'framer-motion';
 
+const rotate = keyframes`
+from {
+  transform: rotate(0);
+}
+to {
+  transform: rotate(360deg);
+}`
+
 const center = styled.button`
 position: absolute;
 top: ${props => props.click ? '85%' :'50%'  };
@@ -19,7 +27,7 @@ justify-content: center;
 align-items: center;
 transition: all 1s ease;
 &>:first-child{
-    animation: ${rotate} infinite 1.5s linear;
+  animation: ${rotate} infinite 1.5s linear;
 }
 &>:last-child{
     display: ${props => props.click ? 'none' :'inline-block'  };
@@ -29,15 +37,17 @@ transition: all 1s ease;
 
 
 const Home = () => {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
 
   return (
     <>
-    <center>
-      <PowerButton width={150} height={150} />
-      <span>click here</span>
+    <center click={click}>
+      <PowerButton onClick={() => handleClick()} width= {click ?120: 200} height={click ? 120: 200}>Start</PowerButton>
 
     </center>
-    
+   
     </>
     
   );
