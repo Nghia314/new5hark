@@ -1,9 +1,11 @@
 import React from "react";
 import Chart from "../components/Chart"
+import Navbar from "../components/Navbar";
 
 function YourDay() {
   return (
     <>
+    <Navbar />
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3">
         <div className="card bg-neutral text-center">
           <h2 className="card-header text-neutral p-3 bg-primary">Today</h2>

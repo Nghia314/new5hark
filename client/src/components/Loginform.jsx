@@ -31,14 +31,12 @@ function Loginform() {
   };
   return (
     <>
-      <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+      <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
         <form onSubmit={handleFormSubmit}>
           <div className="form-group mb-6">
-            <label className="form-label inline-block mb-2 text-gray-700">
-              Email address
-            </label>
+          <h2 className="text-center text-3xl font-bold mb-6">Sign in</h2>
             <input
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none invalid:border-error invalid:text-error focus:invalid:border-error focus:invalid:text-error"
+              className="input input-bordered w-full valid:focus:input-primary invalid:text-error invalid:border-error focus:invalid:text-error focus:invalid:border-error"
               type="email"
               name="email"
               placeholder="Enter email"
@@ -47,12 +45,9 @@ function Loginform() {
           </div>
 
           <div className="form-group mb-6">
-            <label className="form-label inline-block mb-2 text-gray-700">
-              Password
-            </label>
             <input
               type="password"
-              className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              className="input input-bordered w-full focus:input-primary"
               name="password"
               placeholder="Password"
               onChange={handleChange}
@@ -61,7 +56,7 @@ function Loginform() {
 
           <button
             type="submit"
-            className=" w-full px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+            className="btn btn-primary w-full"
           >
             Sign in
           </button>
