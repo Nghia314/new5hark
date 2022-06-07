@@ -1,7 +1,7 @@
 import React from "react";
 import SignupForm from "../components/SignupForm";
 
-function Login() {
+function Signup() {
   return (
     <>
       <div className="flex justify-center p-3">
@@ -11,4 +11,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

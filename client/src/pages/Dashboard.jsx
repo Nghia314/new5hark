@@ -94,7 +94,12 @@ function Dashboard() {
     }
   };
 
-  // const handleMoveToMyDay = () => {};
+  const handleMoveToMyDay = (e) => {
+    e.preventDefault();
+    console.log("click");
+    console.log(e.target)
+    // setMyDayActivities()
+  };
 
   return (
     <>
@@ -108,6 +113,7 @@ function Dashboard() {
             <UserActivities
               className="md:col-span-8"
               userActivities={userActivities}
+              handleMoveToMyDay={handleMoveToMyDay}
             />
             {/* create activity form */}
             <CreateActivityForm
@@ -118,6 +124,8 @@ function Dashboard() {
           </div>
           <ActivityBank
             allActivities={allActivities}
+            handleMoveToMyDay={handleMoveToMyDay}
+
           />
         </div>
         <div className="md:col-span-4">

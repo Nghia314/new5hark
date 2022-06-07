@@ -3,7 +3,7 @@ import React from "react";
 //import components
 import Button from "../components/Button";
 
-function UserActivities({ userActivities }) {
+function UserActivities({ userActivities, handleMoveToMyDay }) {
   if (userActivities.length === 0) {
     return (
       <div>
@@ -22,9 +22,11 @@ function UserActivities({ userActivities }) {
         {/* <Button activity={"something"} color={"primary"} /> */}
         {userActivities.map((activity) => (
           <Button
-            activity={activity.name}
+            activity={activity}
             key={activity._id}
             color={"secondary"}
+            handleMoveToMyDay={handleMoveToMyDay}
+
           />
         ))}
       </div>
