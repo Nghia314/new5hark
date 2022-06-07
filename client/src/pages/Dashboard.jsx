@@ -18,7 +18,7 @@ function Dashboard() {
   const [myDayActivities, setMyDayActivities] = useState([]);
 
   // state for all activities fetch
-  const [communityActivities, setCommunityActivities] = useState([]);
+  const [allActivities, setAllActivities] = useState([]);
 
   const [userActivities, setUserActivities] = useState([]);
 
@@ -32,7 +32,7 @@ function Dashboard() {
 
   // happens on page load, but may need to also happen when userActivities change
   useEffect(() => {
-    const communityDataFetch = async () => {
+    const allDataFetch = async () => {
       try {
         const res = await fetchAllActivities();
 
@@ -41,7 +41,7 @@ function Dashboard() {
         }
 
         const data = await res.json();
-        setCommunityActivities(data);
+        setAllActivities(data);
       } catch (err) {
         alert("Something went wrong with the communityDataFetch");
       }
@@ -70,8 +70,8 @@ function Dashboard() {
       }
     };
 
+    allDataFetch();
     userDataFetch();
-    communityDataFetch();
   }, []);
 
   const handleFormSubmit = async (e) => {
@@ -86,11 +86,9 @@ function Dashboard() {
         alert("something went wrong while creating activity");
       }
       const newAct = await res.json();
-      debugger;
       console.log(newAct);
-      debugger;
       setUserActivities([newAct, ...userActivities]);
-      debugger;
+      setAllActivities([newAct, ...allActivities]);
     } catch (err) {
       alert("Something went wrong with whole function");
     }
@@ -118,7 +116,9 @@ function Dashboard() {
               className="md:col-span-4"
             />
           </div>
-          <ActivityBank />
+          <ActivityBank
+            allActivities={allActivities}
+          />
         </div>
         <div className="md:col-span-4">
           <MyDay />
