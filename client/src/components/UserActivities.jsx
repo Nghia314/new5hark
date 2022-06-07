@@ -24,8 +24,7 @@ function UserActivities({ userActivities }) {
           <Button
             activity={activity.name}
             key={activity._id}
-            color={"warning"}
-            // onClick={itWorks}
+            color={"secondary"}
           />
         ))}
       </div>

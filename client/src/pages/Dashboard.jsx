@@ -119,13 +119,10 @@ function Dashboard() {
             />
           </div>
           <ActivityBank />
-          {/* end of communty activity div  */}
         </div>
-        {/* end of left side of page */}
-
-        {/* begin right side */}
-        <MyDay />
-        {/* end whole grid of page */}
+        <div className="md:col-span-4">
+          <MyDay />
+        </div>
       </div>
     </>
   );
