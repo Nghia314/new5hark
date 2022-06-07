@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
-function MyDay({ myDayActivities }) {
+function MyDay({ myDayActivities, handleStartMyDay }) {
   if (myDayActivities.length === 0) {
     return (
       <div className="card bg-neutral w-full p-3">
@@ -25,7 +25,9 @@ function MyDay({ myDayActivities }) {
           <Button key={activity._id} activity={activity} color={color} />
         ))}
       </div>
-      <button className="btn btn-warning">Start my Day!</button>
+      <button className="btn btn-warning" onClick={handleStartMyDay}>
+        Start my Day!
+      </button>
     </div>
   );
 }

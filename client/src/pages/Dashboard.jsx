@@ -3,7 +3,12 @@ import React, { useState, useEffect } from "react";
 
 // import utils
 import Security from "../utils/security";
-import { fetchAllActivities, getUserData, createActivity } from "../utils/API";
+import {
+  fetchAllActivities,
+  getUserData,
+  createActivity,
+  createAchievement,
+} from "../utils/API";
 
 //import components
 import Navbar from "../components/Navbar";
@@ -62,6 +67,10 @@ function Dashboard() {
     } else {
       alert("You can only add an activity once!");
     }
+  };
+
+  const handleStartMyDay = async () => {
+    console.log("click");
   };
 
   // happens on page load, but may need to also happen when userActivities change
@@ -134,7 +143,10 @@ function Dashboard() {
           />
         </div>
         <div className="md:col-span-4">
-          <MyDay myDayActivities={myDayActivities} />
+          <MyDay
+            myDayActivities={myDayActivities}
+            handleStartMyDay={handleStartMyDay}
+          />
         </div>
       </div>
     </>
