@@ -7,6 +7,7 @@ import { PowerBtn } from "../components/AllSvgs";
 const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
   background-image: url(https://api.lorem.space/image/fashion?w=1200&h=800);
+  backdrop-filter: blur(5px);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -20,6 +21,7 @@ const Maincontainer = styled.div`
     font-weight: 500;
   }
 `;
+
 // css container
 const Container = styled.div`
 padding: 2rem
