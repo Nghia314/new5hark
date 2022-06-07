@@ -6,6 +6,7 @@ import Security from "../utils/security";
 import { fetchAllActivities } from "../utils/API";
 
 //import components
+import Navbar from "../components/Navbar";
 import ActivityBank from "../components/ActivityBank";
 import UserActivities from "../components/UserActivities";
 import CreateActivityForm from "../components/CreateActivityForm";
@@ -68,81 +69,18 @@ function Dashboard() {
   // };
   return (
     <>
+    <Navbar />
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3 text-center">
         <div className="card md:col-span-8 bg-neutral w-full p-3 text-center">
           <h2 className="card-header text-3xl font-bold">Build your Day</h2>
           <div className="grid md:grid-cols-2 gap-3">
             {/* comment */}
             {/* this should be the user activities component, being passed userActivities stateful value */}
-            <UserActivities />
+            <UserActivities className="md:col-span-8" />
             {/* create activity form */}
-            <CreateActivityForm />
+            <CreateActivityForm className="md:col-span-4" />
           </div>
-
-          <div className="card bg-base-100 mt-3">
-            <h2 className="card-header text-neutral p-3 bg-secondary">
-              Activity Bank
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 p-3 gap-3">
-              {/* activities.map((activity) => { */}
-              {/*   <Button / props> */}
-              {/* }) */}
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-              <button className="btn btn-default b w-full truncate">
-                Walk
-              </button>
-            </div>
-          </div>
+          <ActivityBank />
           {/* end of communty activity div  */}
         </div>
         {/* end of left side of page */}
