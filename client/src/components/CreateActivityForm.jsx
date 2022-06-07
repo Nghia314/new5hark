@@ -18,7 +18,8 @@ function CreateActivityForm() {
         alert("something went wrong while creating activity");
       }
       const newAct = await res.json();
-      alert("New Activity Created");
+      // alert("New Activity Created");
+      document.location.reload();
     } catch (err) {
       alert("Something went wrong with whole function");
     }

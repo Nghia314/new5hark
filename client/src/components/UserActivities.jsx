@@ -59,7 +59,7 @@ function UserActivities() {
           <Button
             activity={activity.name}
             key={activity._id}
-            color={"secondary"}
+            color={"warning"}
             onClick={itWorks}
           />
         ))}

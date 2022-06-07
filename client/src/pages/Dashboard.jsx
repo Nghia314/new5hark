@@ -19,14 +19,7 @@ function Dashboard() {
   const [myDayActivities, setMyDayActivities] = useState([]);
 
   // state for handling the new activity form
-  const [newActivityFormState, setNewActivityForm] = useState({
-    name: "",
-    description: "",
-  });
-
   const [communityActivities, setCommunityActivities] = useState([]);
-
-  // array for populating the user activities section
 
   // happens on page load, but may need to also happen when userActivities change
   useEffect(() => {
@@ -69,7 +62,7 @@ function Dashboard() {
   // };
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3 text-center">
         <div className="card md:col-span-8 bg-neutral w-full p-3 text-center">
           <h2 className="card-header text-3xl font-bold">Build your Day</h2>
@@ -79,6 +72,7 @@ function Dashboard() {
             <UserActivities className="md:col-span-8" />
             {/* create activity form */}
             <CreateActivityForm className="md:col-span-4" />
+            <UserActivities />
           </div>
           <ActivityBank />
           {/* end of communty activity div  */}
