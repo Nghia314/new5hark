@@ -1,8 +1,14 @@
 import React from "react";
 import Chart from "../components/Chart"
 import Navbar from "../components/Navbar";
+import { useLocation } from "react-router-dom";
 
 function YourDay() {
+  console.log("This is what you're sending over");
+  const location = useLocation();
+  const { from } = location.state;
+
+  console.log(from);
   return (
     <>
     <Navbar />
