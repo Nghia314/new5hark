@@ -5,22 +5,7 @@ import Button from "./Button.jsx";
 // take in array of objects from the fetch from all activities
 // map through, creating a button for each one,
 // <Button {activity}, including the color/>
-function ActivityBank() {
-  const [allActivities, setAllActivities] = useState([]);
-
-  useEffect(() => {
-    const getAllActivities = async () => {
-      try {
-        const res = await fetchAllActivities();
-        const data = await res.json();
-        setAllActivities(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getAllActivities();
-  }, []);
-
+function ActivityBank({ allActivities }) {
   return (
     <>
       <div className="card bg-base-100 mt-3">
