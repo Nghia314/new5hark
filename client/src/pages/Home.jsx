@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import PowerButton from "../components/Button";
 import Loginform from "../components/Loginform";
 import styled, { keyframes } from "styled-components";
 import { PowerBtn } from "../components/AllSvgs";
 // style for main container
 const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
-  background-image: url(https://api.lorem.space/image/fashion?w=1200&h=800);
+  background-image: url(https://api.lorem.space/image?w=1300%&h=1000);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -66,8 +65,6 @@ const Home = () => {
   const handleClick = () => setClick(!click);
 
   return (
-
-
     <Maincontainer >
       <Container>
         {/* calling Button function */}

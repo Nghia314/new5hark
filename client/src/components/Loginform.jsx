@@ -6,11 +6,13 @@ import Security from "../utils/security";
 
 function Loginform() {
   const [formState, setForm] = useState({ email: "", password: "" });
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...formState, [name]: value });
   };
+
+  
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -29,12 +31,13 @@ function Loginform() {
       alert("Please try again!");
     }
   };
+  
   return (
     <>
       <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
         <form onSubmit={handleFormSubmit}>
           <div className="form-group mb-6">
-          <h2 className="text-center text-3xl font-bold mb-6">Sign in</h2>
+            <h2 className="text-center text-3xl font-bold mb-6">Sign in</h2>
             <input
               className="input input-bordered w-full valid:focus:input-primary invalid:text-error invalid:border-error focus:invalid:text-error focus:invalid:border-error"
               type="email"
@@ -54,21 +57,17 @@ function Loginform() {
             />
           </div>
 
-          <button
-            type="submit"
-            className="btn btn-primary w-full"
-          >
+          <button type="submit" className="btn btn-primary w-full">
             Sign in
           </button>
-
+          
           <p className="text-gray-800 mt-6 text-center">
             Not a member?{" "}
-            <a
-              href="#!"
-              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-            >
-              Register
-            </a>
+            <Link
+            to="/login"
+            className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">
+              Resgister
+            </Link>
           </p>
         </form>
       </div>
