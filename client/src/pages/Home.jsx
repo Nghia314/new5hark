@@ -6,6 +6,7 @@ import { PowerBtn } from "../components/AllSvgs";
 // style for main container
 const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
+  background-image: url(https://api.lorem.space/image/watch?w=1000&h=800);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -21,7 +22,8 @@ const Maincontainer = styled.div`
 `;
 // css container
 const Container = styled.div`
-padding: 2rem`;
+padding: 2rem
+justify-content: center`;
 
 const rotate = keyframes`
 from {
@@ -49,8 +51,9 @@ const Center = styled.button`
     animation: ${rotate} infinite 1.5s linear;
   }
   & > :last-child {
-    display: ${(props) => (props.click ? "none" : "inline-block")};
-    padding-top: 1rem;
+    display: ${(props) => (props.click ? "none" : "center")};
+    padding-top: 1rem
+    justify-content: center;
   }
 `;
 
@@ -62,7 +65,7 @@ const Home = () => {
 
   return (
 
-    <Maincontainer>
+    <Maincontainer >
      
       <Container>
         {/* calling Button function */}
