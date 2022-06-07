@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import SignupForm from "./SignupForm";
 
 import { loginUser } from "../utils/API";
 import Security from "../utils/security";
@@ -32,7 +31,7 @@ function Loginform() {
       alert("Please try again!");
     }
   };
-    
+  
   return (
     <>
       <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
@@ -61,17 +60,14 @@ function Loginform() {
           <button type="submit" className="btn btn-primary w-full">
             Sign in
           </button>
-
+          
           <p className="text-gray-800 mt-6 text-center">
             Not a member?{" "}
-            
-              <a
-              href="#!"
-              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-            >
-
+            <a
+            to="/SignupForm"
+            className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">
+              Resgister
             </a>
-            
           </p>
         </form>
       </div>
