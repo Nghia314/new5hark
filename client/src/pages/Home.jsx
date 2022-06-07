@@ -30,7 +30,7 @@ from {
 to {
   transform: rotate(360deg);
 }`;
-
+// css for center calling animation
 const Center = styled.button`
   position: absolute;
   top: ${(props) => (props.click ? "85%" : "50%")};
