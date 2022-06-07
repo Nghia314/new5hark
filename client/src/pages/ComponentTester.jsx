@@ -18,8 +18,8 @@ function ComponentTester() {
   return (
     <>
       <h1 className="text-center text-3xl font-bold">Test Components Here!</h1>
-      {/* <Loginform />
-      <SignupForm /> */}
+      <Loginform />
+      <SignupForm />
       <ActivityBank />
       <Button activity={obj.name} onClick={itWorks} color={"primary"} />
       <Loginform />

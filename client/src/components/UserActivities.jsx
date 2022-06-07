@@ -16,16 +16,16 @@ function UserActivities({ userActivities, handleMoveToMyDay }) {
     );
   }
 
+  const color = "warning";
   return (
     <div>
       <h1 className="mb-3">Your Created Activities</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-        {/* <Button activity={"something"} color={"primary"} /> */}
         {userActivities.map((activity) => (
           <Button
             activity={activity}
             key={activity._id}
-            color={"secondary"}
+            color={color}
             handleMoveToMyDay={handleMoveToMyDay}
           />
         ))}
