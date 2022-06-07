@@ -41,7 +41,13 @@ function Dashboard() {
     communityDataFetch();
   }, []);
 
-  const handleMoveToMyDay = () => {};
+  const handleMoveToMyDay = () => {
+
+  }
+
+  const handleAddingToMyDay = async (e) => {
+    // add button data to setMyDayActivities
+  }
 
   // const handleNewActivityForm = async (e) => {
   //   e.preventDefault();
@@ -68,21 +74,14 @@ function Dashboard() {
         <div className="card md:col-span-8 bg-neutral w-full p-3 text-center">
           <h2 className="card-header text-3xl font-bold">Build your Day</h2>
           <div className="grid md:grid-cols-2 gap-3">
-            {/* comment */}
-            {/* this should be the user activities component, being passed userActivities stateful value */}
             <UserActivities className="md:col-span-8" />
-            {/* create activity form */}
             <CreateActivityForm className="md:col-span-4" />
-            <UserActivities />
           </div>
           <ActivityBank />
-          {/* end of communty activity div  */}
         </div>
-        {/* end of left side of page */}
-
-        {/* begin right side */}
-        <MyDay />
-        {/* end whole grid of page */}
+        <div className="md:col-span-4">
+          <MyDay />
+        </div>
       </div>
     </>
   );

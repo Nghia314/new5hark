@@ -2,7 +2,7 @@ import React from "react";
 
 function MyDay({ myDay }) {
   return (
-    <div className="card md:col-span-4 bg-neutral w-full p-3">
+    <div className="card bg-neutral w-full p-3">
       <h2 className="card-title">My Day</h2>
       <div className="grid grid-cols-2 gap-3 my-3">
         {/* MOCK BUTTON DATA, DELETE LATER */}
