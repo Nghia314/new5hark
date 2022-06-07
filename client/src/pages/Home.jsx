@@ -6,7 +6,7 @@ import { PowerBtn } from "../components/AllSvgs";
 // style for main container
 const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
-  background-image: url(https://api.lorem.space/image/watch?w=1000&h=800);
+  background-image: url(https://api.lorem.space/image/fashion?w=1200&h=800);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
