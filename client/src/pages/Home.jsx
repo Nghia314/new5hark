@@ -3,6 +3,7 @@ import PowerButton from "../components/Button";
 import Loginform from "../components/Loginform";
 import styled, {keyframes} from "styled-components"
 import {motion } from 'framer-motion';
+import { PowerBtn } from '../components/AllSvgs'
 
 const rotate = keyframes`
 from {
@@ -43,8 +44,10 @@ const Home = () => {
 
   return (
     <>
+    <PowerButton />
     <center click={click}>
-      <PowerButton onClick={() => handleClick()} width= {click ?120: 200} height={click ? 120: 200}>Start</PowerButton>
+      <PowerBtn onClick={() => handleClick()} width= {click ?120: 200} height={click ? 120: 200}/>
+      <span>Click here</span>
 
     </center>
    
