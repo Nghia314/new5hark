@@ -2,14 +2,14 @@ import React from "react";
 
 function Button({ color, activity, handleMoveToMyDay }) {
   return (
-    // <div className="tooltip" datatip={activity.description}>
-    <button
+    <button 
       onClick={() => handleMoveToMyDay(activity)}
-      className={`btn btn-${color} w-full truncate`}
+      className={`btn btn-${color} w-full`}
     >
-      {activity.name}
+      <p className="line-clamp-2">
+        {activity.name}
+      </p>
     </button>
-    // </div>
   );
 }
 

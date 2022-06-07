@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "./Button";
 
 function MyDay({ myDayActivities, handleStartMyDay }) {
@@ -25,9 +26,11 @@ function MyDay({ myDayActivities, handleStartMyDay }) {
           <Button key={activity._id} activity={activity} color={color} />
         ))}
       </div>
-      <button className="btn btn-warning" onClick={handleStartMyDay}>
-        Start my Day!
-      </button>
+      <Link to="/YourDay" state={{from: {myDayActivities}}}>
+        <button className="btn btn-warning" onClick={handleStartMyDay}>
+          Start my Day!
+        </button>
+      </Link>
     </div>
   );
 }
