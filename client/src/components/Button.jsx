@@ -2,9 +2,12 @@ import React from "react";
 
 function Button({ color, activity, handleMoveToMyDay }) {
   return (
-    <button onClick={onClick} className={`btn btn-${color} w-full`}>
+    <button 
+      onClick={() => handleMoveToMyDay(activity)}
+      className={`btn btn-${color} w-full`}
+    >
       <p className="line-clamp-2">
-      {activity.name}
+        {activity.name}
       </p>
     </button>
   );
