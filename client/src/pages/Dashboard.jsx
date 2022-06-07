@@ -3,34 +3,36 @@ import React, { useState, useEffect } from "react";
 
 // import utils
 import Security from "../utils/security";
-import { fetchAllActivities } from "../utils/API";
+import { fetchAllActivities, getUserData, createActivity } from "../utils/API";
 
 //import components
 import Navbar from "../components/Navbar";
 import ActivityBank from "../components/ActivityBank";
 import UserActivities from "../components/UserActivities";
 import CreateActivityForm from "../components/CreateActivityForm";
+import MyDay from "../components/MyDay";
 
 function Dashboard() {
   // state for activities to be added to the my day box
-  // will eventually get passed into the myDay Component
-  const [selectedActivities, setSelected] = useState([]);
-
+  // will be passed into the myDay Component
   const [myDayActivities, setMyDayActivities] = useState([]);
 
-  // state for handling the new activity form
-  const [newActivityFormState, setNewActivityForm] = useState({
-    name: "",
-    description: "",
-  });
+  // state for all activities fetch
+  const [allActivities, setAllActivities] = useState([]);
 
-  const [communityActivities, setCommunityActivities] = useState([]);
+  const [userActivities, setUserActivities] = useState([]);
 
-  // array for populating the user activities section
+  const [formState, setForm] = useState({});
+
+  const handleFormChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setForm({ ...formState, [name]: value });
+  };
 
   // happens on page load, but may need to also happen when userActivities change
   useEffect(() => {
-    const communityDataFetch = async () => {
+    const allDataFetch = async () => {
       try {
         const res = await fetchAllActivities();
 
@@ -39,67 +41,87 @@ function Dashboard() {
         }
 
         const data = await res.json();
-        // console.log(data);
-        setCommunityActivities(data);
+        setAllActivities(data);
       } catch (err) {
         alert("Something went wrong with the communityDataFetch");
       }
     };
 
-    communityDataFetch();
+    const userDataFetch = async () => {
+      try {
+        const token = Security.loggedIn() ? Security.getToken() : null;
+
+        if (!token) {
+          alert("something went wrong with the token");
+          return false;
+        }
+
+        const res = await getUserData(token);
+
+        if (!res.ok) {
+          alert("Something Went Wrong with getting user data");
+        }
+
+        const data = await res.json();
+        // console.log(data.user.createdActivities);
+        setUserActivities(data.user.createdActivities);
+      } catch (err) {
+        alert("Something Went Wrong with the userdatafetch function");
+      }
+    };
+
+    allDataFetch();
+    userDataFetch();
   }, []);
 
-  // const handleNewActivityForm = async (e) => {
-  //   e.preventDefault();
-  //   const token = Security.loggedIn() ? Security.getToken() : null;
-  //   if (!token) {
-  //     return false;
-  //   }
-  //
-  //   try {
-  //     const res = await createActivity(newActivityFormState, token);
-  //     if (!res.ok) {
-  //       throw new Error("Something Went Wrong");
-  //     }
-  //     const newActivity = await res.json();
-  //     setUserActivities(newActivity);
-  //   } catch (err) {
-  //     alert("Something Went Wrong");
-  //   }
-  // };
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const token = Security.loggedIn() ? Security.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    try {
+      const res = await createActivity(formState, token);
+      if (!res.ok) {
+        alert("something went wrong while creating activity");
+      }
+      const newAct = await res.json();
+      console.log(newAct);
+      setUserActivities([newAct, ...userActivities]);
+      setAllActivities([newAct, ...allActivities]);
+    } catch (err) {
+      alert("Something went wrong with whole function");
+    }
+  };
+
+  // const handleMoveToMyDay = () => {};
+
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3 text-center">
         <div className="card md:col-span-8 bg-neutral w-full p-3 text-center">
           <h2 className="card-header text-3xl font-bold">Build your Day</h2>
           <div className="grid md:grid-cols-2 gap-3">
             {/* comment */}
             {/* this should be the user activities component, being passed userActivities stateful value */}
-            <UserActivities className="md:col-span-8" />
+            <UserActivities
+              className="md:col-span-8"
+              userActivities={userActivities}
+            />
             {/* create activity form */}
-            <CreateActivityForm className="md:col-span-4" />
+            <CreateActivityForm
+              handleFormChange={handleFormChange}
+              handleFormSubmit={handleFormSubmit}
+              className="md:col-span-4"
+            />
           </div>
-          <ActivityBank />
-          {/* end of communty activity div  */}
+          <ActivityBank
+            allActivities={allActivities}
+          />
         </div>
-        {/* end of left side of page */}
-
-        {/* begin right side */}
-        <div className="card md:col-span-4 bg-neutral w-full p-3">
-          <h2 className="card-title">My Day</h2>
-          <div className="grid grid-cols-2 gap-3 my-3">
-            {/* MOCK BUTTON DATA, DELETE LATER */}
-            <button className="btn btn-secondary w-full truncate">Walk</button>
-            <button className="btn btn-secondary w-full truncate">Walk</button>
-            <button className="btn btn-secondary w-full truncate">Walk</button>
-            <button className="btn btn-secondary w-full truncate">Walk</button>
-            <button className="btn btn-secondary w-full truncate">Walk</button>
-            <button className="btn btn-secondary w-full truncate">Walk</button>
-            <button className="btn btn-secondary w-full truncate">Walk</button>
-            {/* MOCK BUTTON DATA, DELETE LATER */}
-          </div>
-          <button className="btn btn-primary">Start my Day!</button>
+        <div className="md:col-span-4">
+          <MyDay />
         </div>
       </div>
     </>

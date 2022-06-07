@@ -1,18 +1,21 @@
 import React from "react";
 
-// handed a stateful arrray fron the dashboard component, t
-
-function MyDay() {
+function MyDay({ myDay }) {
   return (
-    <div>
-      <div className="card max-w-3xl p-3">
-        <div className="card-body border-solid border-2 border-sky-800 bg-slate-800  rounded">
-          <h2 className="text-center text-3xl font-bold">
-            Monthly Chart Summary
-          </h2>
-          <Chart />
-        </div>
+    <div className="card bg-neutral w-full p-3">
+      <h2 className="card-title">My Day</h2>
+      <div className="grid grid-cols-2 gap-3 my-3">
+        {/* MOCK BUTTON DATA, DELETE LATER */}
+        <button className="btn btn-secondary w-full truncate">Walk</button>
+        <button className="btn btn-secondary w-full truncate">Walk</button>
+        <button className="btn btn-secondary w-full truncate">Walk</button>
+        <button className="btn btn-secondary w-full truncate">Walk</button>
+        <button className="btn btn-secondary w-full truncate">Walk</button>
+        <button className="btn btn-secondary w-full truncate">Walk</button>
+        <button className="btn btn-secondary w-full truncate">Walk</button>
+        {/* MOCK BUTTON DATA, DELETE LATER */}
       </div>
+      <button className="btn btn-primary">Start my Day!</button>
     </div>
   );
 }
