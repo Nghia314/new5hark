@@ -6,6 +6,7 @@ import Security from "../utils/security";
 import { fetchAllActivities } from "../utils/API";
 
 //import components
+import Navbar from "../components/Navbar";
 import ActivityBank from "../components/ActivityBank";
 import UserActivities from "../components/UserActivities";
 import CreateActivityForm from "../components/CreateActivityForm";
@@ -68,6 +69,7 @@ function Dashboard() {
   // };
   return (
     <>
+    <Navbar />
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3 text-center">
         <div className="card md:col-span-8 bg-neutral w-full p-3 text-center">
           <h2 className="card-header text-3xl font-bold">Build your Day</h2>
