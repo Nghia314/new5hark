@@ -55,15 +55,19 @@ const Center = styled.button`
 `;
 
 const Home = () => {
+  //  useState click
   const [click, setClick] = useState(false);
-
+// listen to Click to handle click
   const handleClick = () => setClick(!click);
 
   return (
+
     <Maincontainer>
      
       <Container>
+        {/* calling Button function */}
         <PowerButton />
+        {/* this is where the animation happen, after a click it would render login form */}
         <Center click={click}>
           <PowerBtn
             onClick={() => handleClick()}
