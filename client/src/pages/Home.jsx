@@ -3,7 +3,7 @@ import PowerButton from "../components/Button";
 import Loginform from "../components/Loginform";
 import styled, { keyframes } from "styled-components";
 import { PowerBtn } from "../components/AllSvgs";
-
+// style for main container
 const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
   width: 100vw;
@@ -19,7 +19,7 @@ const Maincontainer = styled.div`
     font-weight: 500;
   }
 `;
-
+// css container
 const Container = styled.div`
 padding: 2rem`;
 
