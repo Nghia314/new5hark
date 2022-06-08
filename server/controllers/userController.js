@@ -69,4 +69,9 @@ module.exports = {
   async updateUserAchievements({ user, body }, res) {
     const usr = await User.findOne({ _id: user._id });
   },
+
+  //if we are adding a new achievement it will go to an achievements controller
+  // which will push to the user's array of achievements
+  // otherwise we will hit this route
+  // which will update the achievements that are already there
 };

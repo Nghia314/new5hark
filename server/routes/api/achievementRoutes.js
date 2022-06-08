@@ -9,6 +9,4 @@ const {
 
 router.route("/").get(getAchievements).post(authMiddleware, newAchievement);
 
-// router.route("/:achId").put(authMiddleware, updateAchievement);
-
 module.exports = router;
