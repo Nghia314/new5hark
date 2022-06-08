@@ -2,7 +2,7 @@ import React from "react";
 import Chart from "../components/Chart"
 import Navbar from "../components/Navbar";
 import { useLocation } from "react-router-dom";
-
+import MyDay from "../components/MyDay"
 function YourDay() {
   console.log("This is what you're sending over");
   const location = useLocation();
