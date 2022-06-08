@@ -8,14 +8,19 @@ module.exports = {
       // weeklyCount
       // monthlycount
       ...body,
-    });
+    })
+    // .populate()
+    // .populate({
+    //   path: "createdActivities",
+    //   select: { __v: 0, createdBy: 0 },
+    // })
     if (!newAch) {
       res.status(500).json(err);
     } else {
       // adds to user achievements array
       const upUser = await User.findOneAndUpdate(
         { _id: user._id },
-        { $addToSet: { achievements: newAchievement._id } },
+        { $addToSet: { achievements: newAch._id } },
         { runValidators: true, new: true }
       );
 
