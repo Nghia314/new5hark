@@ -26,7 +26,8 @@ function MyDay({ myDayActivities, handleStartMyDay }) {
           <Button key={activity._id} activity={activity} color={color} />
         ))}
       </div>
-      <Link to="/YourDay" state={{from: {myDayActivities}}}>
+      <Link to={{
+        pathname: "/YourDay", state: myDayActivities }}>
         <button className="btn btn-warning" onClick={handleStartMyDay}>
           Start my Day!
         </button>
