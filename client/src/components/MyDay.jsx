@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 
-function MyDay({ myDayActivities, handleStartMyDay }) {
+function MyDay({ myDayActivities }) {
   if (myDayActivities.length === 0) {
     return (
       <div className="card bg-neutral w-full p-3">
@@ -10,7 +10,7 @@ function MyDay({ myDayActivities, handleStartMyDay }) {
         <div>
           <div>
             <h1 className="text-3xl">Nothing So Far...</h1>
-            <h1 className="text-xl">Click an activity add to MyDay!</h1>
+            <h1 className="text-xl">Click an activity add to YourDay!</h1>
           </div>
         </div>
       </div>
@@ -26,10 +26,8 @@ function MyDay({ myDayActivities, handleStartMyDay }) {
           <Button key={activity._id} activity={activity} color={color} />
         ))}
       </div>
-      <Link to="/YourDay" state={{from: {myDayActivities}}}>
-        <button className="btn btn-warning" onClick={handleStartMyDay}>
-          Start my Day!
-        </button>
+      <Link to="/YourDay" state={{ from: { myDayActivities } }}>
+        <button className="btn btn-warning">Start my Day!</button>
       </Link>
     </div>
   );
