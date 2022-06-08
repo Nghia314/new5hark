@@ -4,11 +4,11 @@ import Navbar from "../components/Navbar";
 import { useLocation } from "react-router-dom";
 
 
-function YourDay() {
-  console.log("This is what you're sending over");
+function YourDay({myDayActivities}) {
+console.log("This is what you're sending over");
   const location = useLocation();
   const { from } = location.state || {};
-
+  
   console.log(from);
   return (
     <>
