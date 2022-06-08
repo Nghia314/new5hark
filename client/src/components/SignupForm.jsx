@@ -24,7 +24,7 @@ function SignupForm() {
       const { token } = await res.json();
       Security.save(token);
     } catch (err) {
-      alert("Password needs to be 8 chars or longer");
+      alert("Something Went Wrong, Please try again");
     }
     setForm({
       name: "",
