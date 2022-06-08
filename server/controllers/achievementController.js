@@ -3,7 +3,7 @@ const { Achievement, User } = require("../models");
 module.exports = {
   async newAchievement({ user, body }, res) {
     const newAch = await Achievement.create({
-      // activity (needs id)
+      // activity (_id)
       // doneToday
       // weeklyCount
       // monthlycount
@@ -32,11 +32,6 @@ module.exports = {
           })
         : res.json(newAch);
     }
-    // try {
-    //   res.json(true);
-    // } catch (err) {
-    //   return res.status(400).json({ message: "Please try again" });
-    // }
   },
 
   getAchievements(req, res) {
@@ -45,5 +40,5 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  updateAchievement({ user, body }, res) {},
+  // updateAchievement({ user, body }, res) {},
 };

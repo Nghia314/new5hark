@@ -6,9 +6,14 @@ const {
   getUsers,
   newUser,
   getOneUser,
+  updateUserAchievements,
 } = require("../../controllers/userController");
 
-router.route("/").get(getUsers).post(newUser);
+router
+  .route("/")
+  .get(getUsers)
+  .post(newUser)
+  .put(authMiddleware, updateUserAchievements);
 
 router.route("/login").post(login);
 

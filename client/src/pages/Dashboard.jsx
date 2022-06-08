@@ -69,10 +69,6 @@ function Dashboard() {
     }
   };
 
-  const handleStartMyDay = async () => {
-    console.log("click");
-  };
-
   // happens on page load, but may need to also happen when userActivities change
   useEffect(() => {
     // gets all users's activities
@@ -143,10 +139,7 @@ function Dashboard() {
           />
         </div>
         <div className="md:col-span-4">
-          <MyDay
-            myDayActivities={myDayActivities}
-            handleStartMyDay={handleStartMyDay}
-          />
+          <MyDay myDayActivities={myDayActivities} />
         </div>
       </div>
     </>
