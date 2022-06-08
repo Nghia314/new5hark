@@ -65,4 +65,8 @@ module.exports = {
 
     !usrs ? res.status(404).json("ERR") : res.json(usrs);
   },
+
+  async updateUserAchievements({ user, body }, res) {
+    const usr = await User.findOne({ _id: user._id });
+  },
 };
