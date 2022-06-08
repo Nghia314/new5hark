@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Loginform from "../components/Loginform";
 import styled, { keyframes } from "styled-components";
-import { PowerBtn } from "../components/AllSvgs";
+import { LoadingButton } from "../components/AllSvgs";
 // style for main container
 const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
@@ -70,7 +70,7 @@ const Home = () => {
         {/* calling Button function */}
         {/* this is where the animation happen, after a click it would render login form */}
         <Center click={click}>
-          <PowerBtn
+          <LoadingButton
             onClick={() => handleClick()}
             width={click ? 120 : 200}
             height={click ? 120 : 200}

@@ -6,8 +6,9 @@ import YourDayActivities from "../components/YourDayActivities";
 import ActivitiesDoneToday from "../components/ActivitiesDoneToday";
 import Button from "../components/Button";
 
-function YourDay() {
-  console.log("This is what you're sending over");
+
+function YourDay({myDayActivities}) {
+console.log("This is what you're sending over");
   const location = useLocation();
   const { from } = location.state || {};
   const END_DAY = { name: "End Day" };
@@ -17,7 +18,7 @@ function YourDay() {
     <>
     <Navbar />
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3">
-        <div className="card bg-neutral text-center">
+        <div className="card bg-neutral text-center"> 
           <h2 className="card-header text-neutral p-3 bg-primary">Today</h2>
           <div className="p-3 grid-flow-col">
             <YourDayActivities />
