@@ -6,13 +6,11 @@ import Security from "../utils/security";
 
 function Loginform() {
   const [formState, setForm] = useState({ email: "", password: "" });
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...formState, [name]: value });
   };
-
-  
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +28,7 @@ function Loginform() {
       alert("Please try again!");
     }
   };
-  
+
   return (
     <>
       <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
@@ -59,13 +57,14 @@ function Loginform() {
           <button type="submit" className="btn btn-primary w-full">
             Sign in
           </button>
-          
-          <p className="text-gray-800 mt-6 text-center">
+
+          <p className="text-white mt-6 text-center">
             Not a member?{" "}
             <Link
-            to="/Signup"
-            className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">
-              Resgister
+              to="/Signup"
+              className="text-primary hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+            >
+              Register
             </Link>
           </p>
         </form>
