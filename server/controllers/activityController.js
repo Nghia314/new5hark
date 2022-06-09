@@ -47,7 +47,7 @@ module.exports = {
     console.log(body._id);
     const updateUser = await User.findOneAndUpdate(
       { _id: user._id },
-      { $pull: { createdActivities: { _id: body._id } } },
+      { $pull: { createdActivities: body._id } },
       { new: true }
     );
     console.log(updateUser);
