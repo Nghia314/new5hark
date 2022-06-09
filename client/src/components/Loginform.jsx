@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import { loginUser } from "../utils/API";
 import Security from "../utils/security";
 
-import styled from "styled-components";
-import {motion} from "framer-motion";
-import Logo from "../Assets/Shark.png"
-
 function Loginform() {
   const [formState, setForm] = useState({ email: "", password: "" });
 

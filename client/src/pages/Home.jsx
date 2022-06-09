@@ -5,7 +5,7 @@ import { LoadingButton } from "../components/AllSvgs";
 import Security from "../utils/security";
 import { Link } from "react-router-dom";
 
-import shark from "../Assets/Shark.png"
+import shark from "../Assets/Shark.jpeg"
 import { DarkTheme } from "../components/Themes";
 // style for main container
 
@@ -38,9 +38,9 @@ const float = styled.div`
 
 const Sharklogo= styled.div`
 position: absolute;
-top: 10%;
-left: 5%;
-width: 20vw;
+top: 15%;
+right: 5%;
+width: 25vw;
 animation: ${float} 4s ease infinite;
 img{
   width: 100%;
