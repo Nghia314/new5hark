@@ -1,9 +1,9 @@
 import React from "react";
 
-function Button({ color, activity, handleMoveToMyDay }) {
+function YourDayButton({ color, activity, handleCounting }) {
   return (
     <button
-      onClick={() => handleMoveToMyDay(activity)}
+      onClick={() => handleCounting(activity)}
       className={`btn btn-${color} w-full`}
     >
       <p className="line-clamp-2">{activity.name}</p>
@@ -11,4 +11,4 @@ function Button({ color, activity, handleMoveToMyDay }) {
   );
 }
 
-export default Button;
+export default YourDayButton;
