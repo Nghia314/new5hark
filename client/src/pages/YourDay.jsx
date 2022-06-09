@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Chart from "../components/Chart";
 import Navbar from "../components/Navbar";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import YourDayActivities from "../components/YourDayActivities";
 import ActivitiesDoneToday from "../components/ActivitiesDoneToday";
 import Button from "../components/Button";
@@ -46,7 +46,9 @@ function YourDay({ myDayActivities }) {
               handleCounting={handleCounting}
             />
             <ActivitiesDoneToday clickCount={clickCount} />
-            <Button color="primary" activity={END_DAY} />
+            <Link to={"/dashboard"}>
+              <Button color="primary" activity={END_DAY} />
+            </Link>
           </div>
         </div>
         <div className="card bg-neutral text-center">
@@ -55,9 +57,7 @@ function YourDay({ myDayActivities }) {
           </h2>
           <div className="p-3">
             <h2>Today's Stats</h2>
-            <Chart
-              counterState={counterState}
-            />
+            <Chart counterState={counterState} />
           </div>
         </div>
       </div>
