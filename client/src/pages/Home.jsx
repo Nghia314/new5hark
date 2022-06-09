@@ -39,7 +39,7 @@ const float = styled.div`
 const Sharklogo= styled.div`
 position: absolute;
 top: 10%;
-right: 5%;
+left: 5%;
 width: 20vw;
 animation: ${float} 4s ease infinite;
 img{
