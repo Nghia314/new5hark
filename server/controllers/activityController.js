@@ -42,4 +42,17 @@ module.exports = {
 
     !acts ? res.status(404).json("ERR") : res.json(acts);
   },
+
+  async deleteActivity({ user, body }, res) {
+    console.log(body._id);
+    const updateUser = await User.findOneAndUpdate(
+      { _id: user._id },
+      { $pull: { createdActivities: { _id: body._id } } },
+      { new: true }
+    );
+    console.log(updateUser);
+    !updateUser
+      ? res.status(404).json({ message: "There was an error" })
+      : res.json(updateUser);
+  },
 };
