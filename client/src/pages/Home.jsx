@@ -4,10 +4,12 @@ import styled, { keyframes, ThemeProvider } from "styled-components";
 import { LoadingButton } from "../components/AllSvgs";
 import Security from "../utils/security";
 import { Link } from "react-router-dom";
-
-import shark from "../Assets/Shark.jpeg"
-import { DarkTheme } from "../components/Themes";
 import ParticleComponent from "../components/ParticleComponent";
+
+import shark from "../assets/Shark.jpeg"
+import { DarkTheme } from "../components/Themes";
+import Particles from "react-tsparticles";
+import particleJson from "../config/particlesjs-config.json"
 // style for main container
 
 const Maincontainer = styled.div`
@@ -15,7 +17,7 @@ const Maincontainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  position: relative;
+  position: relative;s
   h2,
   h3,
   h4,
@@ -39,9 +41,9 @@ const float = styled.div`
 
 const Sharklogo= styled.div`
 position: absolute;
-top: 15%;
-right: 5%;
-width: 25vw;
+bottom: 5%;
+right: 37%;
+width: 27vw;
 animation: ${float} 4s ease infinite;
 img{
   width: 100%;
@@ -88,10 +90,11 @@ const Home = () => {
   return (
     <>
     < ThemeProvider theme={DarkTheme} >
-      <ParticleComponent theme='dark' />
-    
+        <ParticleComponent />
       {Security.loggedIn() ? (
         <Maincontainer>
+           
+    
           <Container>
             <Center click={click}>
               <Link to={"/dashboard"}>
@@ -113,6 +116,7 @@ const Home = () => {
         </Maincontainer>
       ) : (
         <Maincontainer>
+      
           <Container>
              <Sharklogo>
           <img src= {shark} alt="sharklogo"></img>
