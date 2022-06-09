@@ -7,40 +7,33 @@ import ActivitiesDoneToday from "../components/ActivitiesDoneToday";
 import Button from "../components/Button";
 
 function YourDay({ myDayActivities }) {
-  // console.log("This is what you're sending over");
+  // necessary to grab from last location
   const location = useLocation();
   // importing activities from last page
   const { from } = location.state || {};
   const END_DAY = { name: "End Day" };
 
-  // console.log(from);
-
   const [counterState, setCounter] = useState({});
   const [clickCount, setClickCount] = useState(0);
 
+  // set up the counter stateful object on page load, based on what comes in from last page
   useEffect(() => {
-    // setting up state based on from
-    // looping through array, and making a new key in the object
-    // setting a new counter for the key
     const freshState = {};
     from.forEach((activity) => {
       freshState[activity._id] = { count: 0, name: activity.name };
     });
-    // console.log(freshState);
+    // sets the counter to the fresh state on page load
     setCounter(freshState);
   }, []);
 
+  // adds to the overall count, as well as updates each activity within the counter object
   const handleCounting = (act) => {
-    // console.log(act);
     setClickCount(clickCount + 1);
-    // console.log("click!");
     const id = act._id;
-    // console.log(counterState[id]);
     counterState[id].count++;
-    // console.log(counterState[id]);
     setCounter(counterState, counterState[id]);
-    console.log(counterState);
   };
+
   return (
     <>
       <Navbar />
