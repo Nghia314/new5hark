@@ -31,12 +31,14 @@ function Dashboard() {
   const [userActivities, setUserActivities] = useState([]);
 
   // newactivity form state
+  // passed to createActivity
   const [formState, setForm] = useState({});
 
   // delete state
+  // passed to CreateActivityForm
   const [deleteState, setDeleteState] = useState(false);
 
-  // handlers for forms and bettons
+  // handlers for forms and buttons
   const handleFormChange = (e) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -55,7 +57,8 @@ function Dashboard() {
         alert("something went wrong while creating activity");
       }
       const newAct = await res.json();
-      // console.log(newAct);
+
+      // reset's state on page after updating database
       setUserActivities([newAct, ...userActivities]);
       setAllActivities([newAct, ...allActivities]);
     } catch (err) {
@@ -64,7 +67,6 @@ function Dashboard() {
   };
 
   const handleMoveToMyDay = (newAct) => {
-    // console.log("click");
     if (!myDayActivities.includes(newAct)) {
       setMyDayActivities([newAct, ...myDayActivities]);
     } else {
@@ -78,17 +80,23 @@ function Dashboard() {
       return false;
     }
     try {
+      // deleting from database
       const res = await deleteUserActivity({ _id: act._id }, token);
       if (!res.ok) {
         alert("something went wrong with deleting from database");
       }
-      const data = await res.json();
-      console.log(data);
 
-      const updatedActs = userActivities.filter(
+      // filter through current state, removing clicked activity
+      const updatedUserActs = userActivities.filter(
         (activity) => activity._id !== act._id
       );
-      setUserActivities(updatedActs);
+      const updatedAllActs = allActivities.filter(
+        (activity) => activity._id !== act._id
+      );
+
+      // updating states with filtered activities
+      setUserActivities(updatedUserActs);
+      setAllActivities(updatedAllActs);
     } catch (err) {
       alert(
         "Something went wrong with something went wrong with whole handleDelete"
