@@ -61,7 +61,7 @@ function YourDay({ myDayActivities }) {
             Your Stats
           </h2>
           <div className="p-3">
-            <h2>Monthly Stats</h2>
+            <h2>Today's Stats</h2>
             <Chart
               counterState={counterState}
             />
