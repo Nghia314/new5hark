@@ -16,6 +16,7 @@ function YourDay({ myDayActivities }) {
   // console.log(from);
 
   const [counterState, setCounter] = useState({});
+  const [clickCount, setClickCount] = useState(0);
 
   useEffect(() => {
     // setting up state based on from
@@ -25,12 +26,21 @@ function YourDay({ myDayActivities }) {
     from.forEach((activity) => {
       freshState[activity._id] = { count: 0, name: activity.name };
     });
-    console.log(freshState);
+    // console.log(freshState);
     setCounter(freshState);
   }, []);
 
-  const handleCounting = () => {};
-
+  const handleCounting = (act) => {
+    // console.log(act);
+    setClickCount(clickCount + 1);
+    // console.log("click!");
+    const id = act._id;
+    // console.log(counterState[id]);
+    counterState[id].count++;
+    // console.log(counterState[id]);
+    setCounter(counterState, counterState[id]);
+    console.log(counterState);
+  };
   return (
     <>
       <Navbar />
@@ -38,8 +48,11 @@ function YourDay({ myDayActivities }) {
         <div className="card bg-neutral text-center">
           <h2 className="card-header text-neutral p-3 bg-primary">Today</h2>
           <div className="p-3 grid-flow-col">
-            <YourDayActivities />
-            <ActivitiesDoneToday />
+            <YourDayActivities
+              activities={from}
+              handleCounting={handleCounting}
+            />
+            <ActivitiesDoneToday clickCount={clickCount} />
             <Button color="primary" activity={END_DAY} />
           </div>
         </div>
@@ -56,5 +69,4 @@ function YourDay({ myDayActivities }) {
     </>
   );
 }
-
 export default YourDay;
