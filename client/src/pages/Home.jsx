@@ -5,7 +5,7 @@ import { LoadingButton } from "../components/AllSvgs";
 import Security from "../utils/security";
 import { Link } from "react-router-dom";
 
-import shark from "../Assets/Shark.jpeg"
+import shark from "../assets/Shark.jpeg"
 import { DarkTheme } from "../components/Themes";
 import ParticleComponent from "../components/ParticleComponent";
 // style for main container
