@@ -18,6 +18,6 @@ app.use(routes);
 
 db.once("open", () => {
   app.listen(PORT, () => {
-    console.log(`🚀  Houston We Have A Sever on port ${PORT} 🚀) `);
+    console.log(`🚀  Houston We Have A Sever on port ${PORT} 🚀`);
   });
 });
