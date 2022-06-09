@@ -1,7 +1,10 @@
 import React from "react";
 
-
-function CreateActivityForm({ handleFormChange, handleFormSubmit }) {
+function CreateActivityForm({
+  handleFormChange,
+  handleFormSubmit,
+  handleDeleteState,
+}) {
   return (
     <div>
       <h1 className="mb-3">Create Activity</h1>
@@ -23,7 +26,12 @@ function CreateActivityForm({ handleFormChange, handleFormSubmit }) {
         <button type="submit" className="btn btn-primary font-bold">
           Add Activity
         </button>
+        <br></br>
+        <br></br>
       </form>
+      <button onClick={handleDeleteState} className="btn btn-error font-bold">
+        Delete Activities
+      </button>
     </div>
   );
 }

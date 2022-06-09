@@ -70,4 +70,15 @@ export const updateUserAchievement = (data, token) => {
   );
 };
 
+export const deleteUserActivity = (data, token) => {
+  return fetch("api/activities", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
+
 // export const
