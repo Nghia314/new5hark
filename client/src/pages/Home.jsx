@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import Loginform from "../components/Loginform";
 import styled, { keyframes } from "styled-components";
 import { LoadingButton } from "../components/AllSvgs";
-<<<<<<< HEAD
-import  Shark  from "../Assets/Shark.png"
-=======
 import Security from "../utils/security";
 import { Link } from "react-router-dom";
->>>>>>> bcef38e65e071a04b1ed77c80a1df89c83f5c303
 // style for main container
 const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
-  background-image: ${(Shark)}
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -36,16 +31,16 @@ const float = styled.div`
 50% { transform: translateY(15px) translateX(15px) }
 100% { transform: translateY(-10px) }`
 
-const Sharklogo= styled.div`
-position: absolute;
-top: 10%;
-right: 5%;
-width: 20vw;
-animation: ${float} 4s ease infinite;
-img{
-  width: 100%;
-  height: auto;
-}`
+// const Sharklogo= styled.div`
+// position: absolute;
+// top: 10%;
+// right: 5%;
+// width: 20vw;
+// animation: ${float} 4s ease infinite;
+// img{
+//   width: 100%;
+//   height: auto;
+// }`
 
 const rotate = keyframes`
 from {
