@@ -1,6 +1,24 @@
 const { Activity, User } = require("../models");
 
 module.exports = {
+  async deleteActivity({ user, body }, res) {
+    const delAct = await Activity.deleteOne({
+      _id: body._id,
+    });
+    if (!delAct) {
+      res.status(500).json({ message: "No Activity Found" });
+    } else {
+      const updateUser = await User.findOneAndUpdate(
+        { _id: user._id },
+        { $pull: { createdActivities: body._id } },
+        { new: true }
+      );
+      !updateUser
+        ? res.status(404).json({ message: "There was an error" })
+        : res.json(updateUser);
+    }
+  },
+
   async newActivity({ user, body }, res) {
     const newActivity = await Activity.create({
       ...body,
@@ -41,18 +59,5 @@ module.exports = {
       });
 
     !acts ? res.status(404).json("ERR") : res.json(acts);
-  },
-
-  async deleteActivity({ user, body }, res) {
-    console.log(body._id);
-    const updateUser = await User.findOneAndUpdate(
-      { _id: user._id },
-      { $pull: { createdActivities: body._id } },
-      { new: true }
-    );
-    console.log(updateUser);
-    !updateUser
-      ? res.status(404).json({ message: "There was an error" })
-      : res.json(updateUser);
   },
 };
