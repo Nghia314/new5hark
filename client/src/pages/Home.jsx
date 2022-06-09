@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 import shark from "../Assets/Shark.jpeg"
 import { DarkTheme } from "../components/Themes";
+import ParticleComponent from "../components/ParticleComponent";
 // style for main container
 
 const Maincontainer = styled.div`
@@ -87,6 +88,7 @@ const Home = () => {
   return (
     <>
     < ThemeProvider theme={DarkTheme} >
+      <ParticleComponent theme='dark' />
     
       {Security.loggedIn() ? (
         <Maincontainer>
