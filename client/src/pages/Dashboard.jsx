@@ -7,7 +7,7 @@ import {
   fetchAllActivities,
   getUserData,
   createActivity,
-  createAchievement,
+  deleteUserActivity,
 } from "../utils/API";
 
 //import components
@@ -32,6 +32,9 @@ function Dashboard() {
 
   // newactivity form state
   const [formState, setForm] = useState({});
+
+  // delete state
+  const [deleteState, setDeleteState] = useState(false);
 
   // handlers for forms and bettons
   const handleFormChange = (e) => {
@@ -67,6 +70,34 @@ function Dashboard() {
     } else {
       alert("You can only add an activity once!");
     }
+  };
+
+  const handleDelete = async (act) => {
+    const token = Security.loggedIn() ? Security.getToken() : null;
+    if (!token) {
+      return false;
+    }
+    try {
+      const res = await deleteUserActivity({ _id: act._id }, token);
+      if (!res.ok) {
+        alert("something went wrong with deleting from database");
+      }
+      const data = await res.json();
+      console.log(data);
+
+      const updatedActs = userActivities.filter(
+        (activity) => activity._id !== act._id
+      );
+      setUserActivities(updatedActs);
+    } catch (err) {
+      alert(
+        "Something went wrong with something went wrong with whole handleDelete"
+      );
+    }
+  };
+
+  const handleDeleteState = () => {
+    setDeleteState(!deleteState);
   };
 
   // happens on page load, but may need to also happen when userActivities change
@@ -126,10 +157,13 @@ function Dashboard() {
               className="md:col-span-8"
               userActivities={userActivities}
               handleMoveToMyDay={handleMoveToMyDay}
+              handleDelete={handleDelete}
+              deleteState={deleteState}
             />
             <CreateActivityForm
               handleFormChange={handleFormChange}
               handleFormSubmit={handleFormSubmit}
+              handleDeleteState={handleDeleteState}
               className="md:col-span-4"
             />
           </div>

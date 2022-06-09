@@ -56,4 +56,29 @@ export const createAchievement = (data, token) => {
   });
 };
 
+export const updateUserAchievement = (data, token) => {
+  return (
+    fetch("api/users"),
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(data),
+    }
+  );
+};
+
+export const deleteUserActivity = (data, token) => {
+  return fetch("api/activities", {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+};
+
 // export const

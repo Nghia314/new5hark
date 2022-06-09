@@ -1,61 +1,67 @@
-import React from "react";
-import Chart from "../components/Chart"
+import React, { useState, useEffect } from "react";
+import Chart from "../components/Chart";
 import Navbar from "../components/Navbar";
 import { useLocation } from "react-router-dom";
+import YourDayActivities from "../components/YourDayActivities";
+import ActivitiesDoneToday from "../components/ActivitiesDoneToday";
+import Button from "../components/Button";
 
-
-function YourDay({myDayActivities}) {
-console.log("This is what you're sending over");
+function YourDay({ myDayActivities }) {
+  // necessary to grab from last location
   const location = useLocation();
+  // importing activities from last page
   const { from } = location.state || {};
-  
-  console.log(from);
+  const END_DAY = { name: "End Day" };
+
+  const [counterState, setCounter] = useState({});
+  const [clickCount, setClickCount] = useState(0);
+
+  // set up the counter stateful object on page load, based on what comes in from last page
+  useEffect(() => {
+    const freshState = {};
+    from.forEach((activity) => {
+      freshState[activity._id] = { count: 0, name: activity.name };
+    });
+    // sets the counter to the fresh state on page load
+    setCounter(freshState);
+  }, []);
+
+  // adds to the overall count, as well as updates each activity within the counter object
+  const handleCounting = (act) => {
+    setClickCount(clickCount + 1);
+    const id = act._id;
+    counterState[id].count++;
+    setCounter(counterState, counterState[id]);
+  };
+
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3">
-        <div className="card bg-neutral text-center"> 
+        <div className="card bg-neutral text-center">
           <h2 className="card-header text-neutral p-3 bg-primary">Today</h2>
           <div className="p-3 grid-flow-col">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 my-3">
-               {/* <div className="input-group w-full">
-                <button className="btn btn-primary btn-sm w-full text-xl">Walk</button>
-                <input className="checkbox checkbox-primary checkbox-lg" type="checkbox"/>
-              </div> */}
-              
-              
-               <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-              <div className="btn btn-outline btn-primary w-full text-xl truncate">Walk</div>
-            </div>
-            <div className="p-3">
-              <h3 className="text-4xl">You've done</h3>
-              <h1 className="text-6xl text-primary">3</h1>
-              <h3 className="text-4xl">Activities today!</h3>
-            </div>
-            <button className="btn btn-primary w-full grid-end-auto">End Day</button>
-          </div> 
+            <YourDayActivities
+              activities={from}
+              handleCounting={handleCounting}
+            />
+            <ActivitiesDoneToday clickCount={clickCount} />
+            <Button color="primary" activity={END_DAY} />
+          </div>
         </div>
         <div className="card bg-neutral text-center">
-          <h2 className="card-header text-neutral p-3 bg-secondary">Your Stats</h2>
+          <h2 className="card-header text-neutral p-3 bg-secondary">
+            Your Stats
+          </h2>
           <div className="p-3">
-            <h2>Monthly Stats</h2>
-            <Chart />
+            <h2>Today's Stats</h2>
+            <Chart
+              counterState={counterState}
+            />
           </div>
         </div>
       </div>
     </>
   );
 }
-
 export default YourDay;
