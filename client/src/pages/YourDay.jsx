@@ -33,7 +33,9 @@ console.log("This is what you're sending over");
           <h2 className="card-header text-neutral p-3 bg-secondary">Your Stats</h2>
           <div className="p-3">
             <h2>Monthly Stats</h2>
-            <Chart />
+            <Chart
+              counterState={counterState}
+            />
           </div>
         </div>
       </div>
