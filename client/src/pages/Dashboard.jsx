@@ -85,10 +85,14 @@ function Dashboard() {
       const data = await res.json();
       console.log(data);
 
-      const updatedActs = userActivities.filter(
+      const updatedUserActs = userActivities.filter(
         (activity) => activity._id !== act._id
       );
-      setUserActivities(updatedActs);
+      const updatedAllActs = allActivities.filter(
+        (activity) => activity._id !== act._id
+      );
+      setUserActivities(updatedUserActs);
+      setAllActivities(updatedAllActs);
     } catch (err) {
       alert(
         "Something went wrong with something went wrong with whole handleDelete"
