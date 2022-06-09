@@ -17,7 +17,7 @@ function MyDay({ myDayActivities }) {
     );
   }
 
-  const color = "secondary";
+  const color = "primary";
   return (
     <div className="card bg-neutral w-full p-3">
       <h2 className="car-header text-2xl ">My Day</h2>
