@@ -40,10 +40,10 @@ const Sharklogo= styled.div`
 position: absolute;
 top: 10%;
 right: 5%;
-width: 100vw;
+width: 20vw;
 animation: ${float} 4s ease infinite;
 img{
-  width: 100;
+  width: 100%;
   height: auto;
 }`;
 
@@ -87,16 +87,9 @@ const Home = () => {
   return (
     <>
     < ThemeProvider theme={DarkTheme} >
-      
-   
-     
+    
       {Security.loggedIn() ? (
-        
-       
         <Maincontainer>
-           <Sharklogo>
-          <img src= {shark} alt="sharklogo"></img>
-          </Sharklogo>
           <Container>
             <Center click={click}>
               <Link to={"/dashboard"}>
@@ -118,11 +111,12 @@ const Home = () => {
         </Maincontainer>
       ) : (
         <Maincontainer>
-          <Sharklogo>
+          <Container>
+             <Sharklogo>
           <img src= {shark} alt="sharklogo"></img>
           </Sharklogo>
-          <Container>
             <Center click={click}>
+               
               <LoadingButton
                 onClick={() => handleClick()}
                 width={click ? 120 : 200}
@@ -131,10 +125,13 @@ const Home = () => {
               />
               <span>Click to Start!</span>
             </Center>
+           
           </Container>
+          
           <div className="flex justify-center p-3 mt-6">
             {click ? <Loginform /> : null}
           </div>
+          
         </Maincontainer>
       )
     }
