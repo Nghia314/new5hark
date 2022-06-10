@@ -46,7 +46,6 @@ const float = styled.div`
   }
 `;
 
-<<<<<<< HEAD
 const Sharklogo= styled.div`
 position: absolute;
 bottom: 5%;
@@ -57,19 +56,6 @@ img{
   width: 100%;
   height: auto;
 }`;
-=======
-const Sharklogo = styled.div`
-  position: absolute;
-  top: 15%;
-  right: 5%;
-  width: 25vw;
-  animation: ${float} 4s ease infinite;
-  img {
-    width: 100%;
-    height: auto;
-  }
-`;
->>>>>>> 9b82435d87d2cfab9ec15dfd9cfe4d9b3e099892
 
 const rotate = keyframes`
 from {
@@ -110,17 +96,6 @@ const Home = () => {
   const handleClick = () => setClick(!click);
   return (
     <>
-<<<<<<< HEAD
-    < ThemeProvider theme={DarkTheme} >
-        <ParticleComponent />
-      {Security.loggedIn() ? (
-        <Maincontainer>
-           
-    
-          <Container>
-            <Center click={click}>
-              <Link to={"/dashboard"}>
-=======
       <ThemeProvider theme={DarkTheme}>
         <ParticleComponent theme="dark" />
 
@@ -150,53 +125,12 @@ const Home = () => {
                 <img src={shark} alt="sharklogo"></img>
               </Sharklogo>
               <Center click={click}>
->>>>>>> 9b82435d87d2cfab9ec15dfd9cfe4d9b3e099892
                 <LoadingButton
                   onClick={() => handleClick()}
                   width={click ? 120 : 200}
                   height={click ? 120 : 200}
                   fill="currentColor"
                 />
-<<<<<<< HEAD
-              </Link>
-              <span>Back To Dashboard</span>
-            </Center>
-          </Container>
-          <div className="flex justify-center p-3 mt-6">
-            {click ? <Loginform /> : null}
-          </div>
-           
- 
-        </Maincontainer>
-      ) : (
-        <Maincontainer>
-      
-          <Container>
-             <Sharklogo>
-          <img src= {shark} alt="sharklogo"></img>
-          </Sharklogo>
-            <Center click={click}>
-               
-              <LoadingButton
-                onClick={() => handleClick()}
-                width={click ? 120 : 200}
-                height={click ? 120 : 200}
-                fill="currentColor"
-              />
-              <span>Click to Start!</span>
-            </Center>
-           
-          </Container>
-          
-          <div className="flex justify-center p-3 mt-6">
-            {click ? <Loginform /> : null}
-          </div>
-          
-        </Maincontainer>
-      )
-    }
-       </ThemeProvider>
-=======
                 <span>Click to Start!</span>
               </Center>
             </Container>
@@ -207,7 +141,6 @@ const Home = () => {
           </Maincontainer>
         )}
       </ThemeProvider>
->>>>>>> 9b82435d87d2cfab9ec15dfd9cfe4d9b3e099892
     </>
   );
 };
