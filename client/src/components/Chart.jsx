@@ -58,7 +58,7 @@ function Chart({ counterState }) {
   };
 
   return (
-    <Doughnut className="max-h-[800px] max-w-[800px]" data={data} />
+    <Doughnut className="max-h-[600px] max-w-[600px]" data={data} />
   );
 }
 
