@@ -1,6 +1,6 @@
 import React from "react";
 import SignupForm from "../components/SignupForm";
-import shark from "../assets/Shark.jpeg";
+import shark from "../assets/white-shark-logo.png";
 import styled, { ThemeProvider } from "styled-components"
 import {DarkTheme} from "../components/Themes";
 const Maincontainer = styled.div`

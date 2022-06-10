@@ -4,7 +4,7 @@ import styled, { keyframes, ThemeProvider } from "styled-components";
 import { LoadingButton } from "../components/AllSvgs";
 import Security from "../utils/security";
 import { Link } from "react-router-dom";
-import shark from "../assets/Shark.jpeg";
+import shark from "../assets/white-shark-logo.png";
 
 import { DarkTheme } from "../components/Themes";
 // style for main container
@@ -76,7 +76,7 @@ const Center = styled.button`
   align-items: center;
   transition: all 1s ease;
   & > :first-child {
-    animation: ${rotate} infinite 1.5s linear;
+    animation: ${rotate} infinite 3.0s linear;
   }
   & > :last-child {
     display: ${(props) => (props.click ? "none" : "center")};
@@ -103,12 +103,13 @@ const Home = () => {
                 <Link to={"/dashboard"}>
                   <LoadingButton
                     // onClick={() => handleClick()}
-                    width={click ? 120 : 200}
-                    height={click ? 120 : 200}
+                    width={click ? 120 : 450}
+                    height={click ? 120 : 450}
                     fill="currentColor"
                   />
+                  <span></span>
                 </Link>
-                <span>Back To Dashboard</span>
+                <span></span>
               </Center>
             </Container>
             <div className="flex justify-center p-3 mt-6">
@@ -124,11 +125,11 @@ const Home = () => {
               <Center click={click}>
                 <LoadingButton
                   onClick={() => handleClick()}
-                  width={click ? 120 : 200}
-                  height={click ? 120 : 200}
+                  width={click ? 120 : 450}
+                  height={click ? 120 : 450}
                   fill="currentColor"
                 />
-                <span>Click to Start!</span>
+                <span></span>
               </Center>
             </Container>
 
