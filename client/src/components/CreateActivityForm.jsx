@@ -23,11 +23,9 @@ function CreateActivityForm({
           placeholder="Description"
           name="description"
         />
-        <button type="submit" className="btn btn-primary font-bold">
+        <button type="submit" className="btn btn-primary mb-3 font-bold">
           Add Activity
         </button>
-        <br></br>
-        <br></br>
       </form>
       <button onClick={handleDeleteState} className="btn btn-error font-bold">
         Delete Activities
