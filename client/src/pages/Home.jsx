@@ -4,11 +4,9 @@ import styled, { keyframes, ThemeProvider } from "styled-components";
 import { LoadingButton } from "../components/AllSvgs";
 import Security from "../utils/security";
 import { Link } from "react-router-dom";
-
 import shark from "../assets/Shark.jpeg";
 
 import { DarkTheme } from "../components/Themes";
-import ParticleComponent from "../components/ParticleComponent";
 // style for main container
 
 const Maincontainer = styled.div`
@@ -44,17 +42,16 @@ const float = styled.div`
   }
 `;
 
-const Sharklogo = styled.div`
-  position: absolute;
-  top: 15%;
-  right: 5%;
-  width: 25vw;
-  animation: ${float} 4s ease infinite;
-  img {
-    width: 100%;
-    height: auto;
-  }
-`;
+const Sharklogo= styled.div`
+position: absolute;
+bottom: 5%;
+right: 37%;
+width: 27vw;
+animation: ${float} 4s ease infinite;
+img{
+  width: 100%;
+  height: auto;
+}`;
 
 const rotate = keyframes`
 from {
@@ -96,11 +93,12 @@ const Home = () => {
   return (
     <>
       <ThemeProvider theme={DarkTheme}>
-        <ParticleComponent theme="dark" />
-
         {Security.loggedIn() ? (
           <Maincontainer>
             <Container>
+            <Sharklogo>
+                <img src={shark} alt="sharklogo"></img>
+              </Sharklogo>
               <Center click={click}>
                 <Link to={"/dashboard"}>
                   <LoadingButton
