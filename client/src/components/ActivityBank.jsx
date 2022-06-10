@@ -7,7 +7,7 @@ function ActivityBank({ allActivities, handleMoveToMyDay }) {
   return (
     <>
       <div className="card bg-base-100 mt-3">
-        <h2 className="card-header text-center text-neutral font-bold text-3xl p-3 bg-secondary">
+        <h2 className="card-header text-center text-neutral font-bold text-2xl p-2 bg-secondary">
           Activity Bank
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 p-3 gap-3">
