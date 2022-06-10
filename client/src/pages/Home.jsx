@@ -103,11 +103,11 @@ const Home = () => {
                 <Link to={"/dashboard"}>
                   <LoadingButton
                     // onClick={() => handleClick()}
-                    width={click ? 120 : 300}
-                    height={click ? 120 : 300}
+                    width={click ? 120 : 450}
+                    height={click ? 120 : 450}
                     fill="currentColor"
                   />
-                  <span>Click here</span>
+                  <span></span>
                 </Link>
                 <span>Back To Dashboard</span>
               </Center>
