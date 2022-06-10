@@ -6,13 +6,8 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Chart({ counterState }) {
 
-
   const activityArray = [];
   const activityAmount = [];
-
-  // const completedAchievs = {
-  //   today: activityAmount
-  // }
 
   for (const key in counterState) {
     const obj = counterState[key];
@@ -63,7 +58,7 @@ function Chart({ counterState }) {
   };
 
   return (
-    <Doughnut className="max-h-screen" data={data} />
+    <Doughnut className="max-h-[800px] max-w-[800px]" data={data} />
   );
 }
 
