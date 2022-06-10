@@ -14,7 +14,7 @@ const Maincontainer = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  position: relative;s
+  position: relative;
   h2,
   h3,
   h4,
