@@ -4,7 +4,7 @@ import styled, { keyframes, ThemeProvider } from "styled-components";
 import { LoadingButton } from "../components/AllSvgs";
 import Security from "../utils/security";
 import { Link } from "react-router-dom";
-import shark from "../assets/Shark.jpeg";
+import shark from "../assets/white-shark-logo.png";
 
 import { DarkTheme } from "../components/Themes";
 // style for main container
@@ -96,9 +96,9 @@ const Home = () => {
         {Security.loggedIn() ? (
           <Maincontainer>
             <Container>
-            {/* <Sharklogo>
+            <Sharklogo>
                 <img src={shark} alt="sharklogo"></img>
-              </Sharklogo> */}
+              </Sharklogo>
               <Center click={click}>
                 <Link to={"/dashboard"}>
                   <LoadingButton
@@ -109,7 +109,7 @@ const Home = () => {
                   />
                   <span></span>
                 </Link>
-                <span>Back To Dashboard</span>
+                <span></span>
               </Center>
             </Container>
             <div className="flex justify-center p-3 mt-6">
@@ -119,9 +119,9 @@ const Home = () => {
         ) : (
           <Maincontainer>
             <Container>
-              {/* <Sharklogo>
+              <Sharklogo>
                 <img src={shark} alt="sharklogo"></img>
-              </Sharklogo> */}
+              </Sharklogo>
               <Center click={click}>
                 <LoadingButton
                   onClick={() => handleClick()}
