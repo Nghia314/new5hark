@@ -17,7 +17,7 @@ function MyDay({ myDayActivities }) {
     );
   }
 
-  const color = "secondary";
+  const color = "primary";
   return (
     <div className="card bg-neutral w-full p-3">
       <h2 className="car-header text-2xl ">My Day</h2>
@@ -27,7 +27,7 @@ function MyDay({ myDayActivities }) {
         ))}
       </div>
       <Link to="/YourDay" state={{ from: myDayActivities }}>
-        <button className="btn btn-warning">Start my Day!</button>
+        <button className="btn btn-warning w-full">Start my Day!</button>
       </Link>
     </div>
   );

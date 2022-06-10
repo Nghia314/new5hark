@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import Loginform from "../components/Loginform";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, ThemeProvider } from "styled-components";
 import { LoadingButton } from "../components/AllSvgs";
+import Security from "../utils/security";
+import { Link } from "react-router-dom";
+
+import shark from "../assets/Shark.jpeg";
+
+import { DarkTheme } from "../components/Themes";
+import ParticleComponent from "../components/ParticleComponent";
 // style for main container
+
 const Maincontainer = styled.div`
   background: ${(props) => props.theme.body};
-  background-image: url(https://api.lorem.space/image?w=1300%&h=1000);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -24,6 +31,29 @@ const Maincontainer = styled.div`
 const Container = styled.div`
 padding: 2rem
 justify-content: center
+`;
+const float = styled.div`
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(15px) translateX(15px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+`;
+
+const Sharklogo = styled.div`
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  width: 25vw;
+  animation: ${float} 4s ease infinite;
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const rotate = keyframes`
@@ -61,28 +91,56 @@ const Center = styled.button`
 const Home = () => {
   //  useState click
   const [click, setClick] = useState(false);
-// listen to Click to handle click
+  // listen to Click to handle click
   const handleClick = () => setClick(!click);
-
   return (
-    <Maincontainer >
-      <Container>
-        {/* calling Button function */}
-        {/* this is where the animation happen, after a click it would render login form */}
-        <Center click={click}>
-          <LoadingButton
-            onClick={() => handleClick()}
-            width={click ? 120 : 200}
-            height={click ? 120 : 200}
-            fill="currentColor"
-          />
-          <span>Click here</span>
-        </Center>
-         
-      </Container>
-      {click ? <Loginform click={click} /> : null}
-    </Maincontainer>
-    
+    <>
+      <ThemeProvider theme={DarkTheme}>
+        <ParticleComponent theme="dark" />
+
+        {Security.loggedIn() ? (
+          <Maincontainer>
+            <Container>
+              <Center click={click}>
+                <Link to={"/dashboard"}>
+                  <LoadingButton
+                    // onClick={() => handleClick()}
+                    width={click ? 120 : 200}
+                    height={click ? 120 : 200}
+                    fill="currentColor"
+                  />
+                </Link>
+                <span>Back To Dashboard</span>
+              </Center>
+            </Container>
+            <div className="flex justify-center p-3 mt-6">
+              {click ? <Loginform /> : null}
+            </div>
+          </Maincontainer>
+        ) : (
+          <Maincontainer>
+            <Container>
+              <Sharklogo>
+                <img src={shark} alt="sharklogo"></img>
+              </Sharklogo>
+              <Center click={click}>
+                <LoadingButton
+                  onClick={() => handleClick()}
+                  width={click ? 120 : 200}
+                  height={click ? 120 : 200}
+                  fill="currentColor"
+                />
+                <span>Click to Start!</span>
+              </Center>
+            </Container>
+
+            <div className="flex justify-center p-3 mt-6">
+              {click ? <Loginform /> : null}
+            </div>
+          </Maincontainer>
+        )}
+      </ThemeProvider>
+    </>
   );
 };
 

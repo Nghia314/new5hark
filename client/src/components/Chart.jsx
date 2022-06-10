@@ -6,7 +6,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Chart({ counterState }) {
 
-  console.log("THIS IS COMING FROM CHART COMPONENT");
 
   const activityArray = [];
   const activityAmount = [];
@@ -20,9 +19,6 @@ function Chart({ counterState }) {
     activityArray.push(obj.name);
     activityAmount.push(obj.count);
   }
-
-  console.log(activityArray)
-  console.log(activityAmount)
 
   const data = {
     labels: activityArray,

@@ -3,7 +3,12 @@ import React from "react";
 //import components
 import Button from "../components/Button";
 
-function UserActivities({ userActivities, handleMoveToMyDay }) {
+function UserActivities({
+  userActivities,
+  handleMoveToMyDay,
+  handleDelete,
+  deleteState,
+}) {
   if (userActivities.length === 0) {
     return (
       <div>
@@ -15,12 +20,30 @@ function UserActivities({ userActivities, handleMoveToMyDay }) {
       </div>
     );
   }
-
-  const color = "warning";
+  let color;
+  if (deleteState) {
+    color = "error";
+    return (
+      <div>
+        <h1 className="mb-3">Your Created Activities</h1>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {userActivities.map((activity) => (
+            <Button
+              activity={activity}
+              key={activity._id}
+              color={color}
+              handleMoveToMyDay={handleDelete}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+  color = "warning";
   return (
     <div>
       <h1 className="mb-3">Your Created Activities</h1>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
         {userActivities.map((activity) => (
           <Button
             activity={activity}
