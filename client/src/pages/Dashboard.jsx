@@ -184,6 +184,9 @@ function Dashboard() {
           <MyDay myDayActivities={myDayActivities} />
         </div>
       </div>
+      <button className="btn btn-secondary hidden"></button> 
+      <button className="btn btn-primary hidden"></button> 
+      <button className="btn btn-warning hidden"></button> 
     </>
   );
 }
