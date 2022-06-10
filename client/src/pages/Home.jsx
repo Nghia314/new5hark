@@ -76,7 +76,7 @@ const Center = styled.button`
   align-items: center;
   transition: all 1s ease;
   & > :first-child {
-    animation: ${rotate} infinite 1.5s linear;
+    animation: ${rotate} infinite 3.0s linear;
   }
   & > :last-child {
     display: ${(props) => (props.click ? "none" : "center")};
@@ -96,17 +96,18 @@ const Home = () => {
         {Security.loggedIn() ? (
           <Maincontainer>
             <Container>
-            <Sharklogo>
+            {/* <Sharklogo>
                 <img src={shark} alt="sharklogo"></img>
-              </Sharklogo>
+              </Sharklogo> */}
               <Center click={click}>
                 <Link to={"/dashboard"}>
                   <LoadingButton
                     // onClick={() => handleClick()}
-                    width={click ? 120 : 200}
-                    height={click ? 120 : 200}
+                    width={click ? 120 : 300}
+                    height={click ? 120 : 300}
                     fill="currentColor"
                   />
+                  <span>Click here</span>
                 </Link>
                 <span>Back To Dashboard</span>
               </Center>
@@ -118,17 +119,17 @@ const Home = () => {
         ) : (
           <Maincontainer>
             <Container>
-              <Sharklogo>
+              {/* <Sharklogo>
                 <img src={shark} alt="sharklogo"></img>
-              </Sharklogo>
+              </Sharklogo> */}
               <Center click={click}>
                 <LoadingButton
                   onClick={() => handleClick()}
-                  width={click ? 120 : 200}
-                  height={click ? 120 : 200}
+                  width={click ? 120 : 450}
+                  height={click ? 120 : 450}
                   fill="currentColor"
                 />
-                <span>Click to Start!</span>
+                <span></span>
               </Center>
             </Container>
 

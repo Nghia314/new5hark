@@ -25,8 +25,8 @@ aria-hidden="true"
 data-prefix="fas"
 data-icon="Shark-loading"
 xmlns="http://www.w3.org/2000/svg"
- width="300"
- height="200"
+ width="300px"
+ height="200px"
 	 viewBox="0 0 512 512" 
   {...props}
 
