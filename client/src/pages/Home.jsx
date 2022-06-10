@@ -4,13 +4,9 @@ import styled, { keyframes, ThemeProvider } from "styled-components";
 import { LoadingButton } from "../components/AllSvgs";
 import Security from "../utils/security";
 import { Link } from "react-router-dom";
-import ParticleComponent from "../components/ParticleComponent";
-
 import shark from "../assets/Shark.jpeg";
 
 import { DarkTheme } from "../components/Themes";
-import Particles from "react-tsparticles";
-import particleJson from "../config/particlesjs-config.json"
 // style for main container
 
 const Maincontainer = styled.div`
@@ -97,8 +93,6 @@ const Home = () => {
   return (
     <>
       <ThemeProvider theme={DarkTheme}>
-        <ParticleComponent theme="dark" />
-
         {Security.loggedIn() ? (
           <Maincontainer>
             <Container>
