@@ -3,7 +3,7 @@ import Button from "./Button.jsx";
 // map through, creating a button for each one,
 // <Button {activity}, including the color/>
 function ActivityBank({ allActivities, handleMoveToMyDay }) {
-  const color = "primary";
+  const color = "secondary";
   return (
     <>
       <div className="card bg-base-100 mt-3">
