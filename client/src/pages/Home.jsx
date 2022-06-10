@@ -96,6 +96,9 @@ const Home = () => {
         {Security.loggedIn() ? (
           <Maincontainer>
             <Container>
+            <Sharklogo>
+                <img src={shark} alt="sharklogo"></img>
+              </Sharklogo>
               <Center click={click}>
                 <Link to={"/dashboard"}>
                   <LoadingButton
