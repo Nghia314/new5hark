@@ -55,12 +55,12 @@ function YourDay({ myDayActivities }) {
           <h2 className="card-header text-neutral p-3 bg-secondary">
             Your Stats
           </h2>
-          <div className="p-3">
-            <h2>Today's Stats</h2>
-            <Chart counterState={counterState} />
+          <div className="p-3 card-body items-center">
+              <h2>Today's Stats</h2>
+              <Chart counterState={counterState} />
+            </div>
           </div>
         </div>
-      </div>
     </>
   );
 }
