@@ -3,7 +3,7 @@ import decode from "jwt-decode";
 class Security {
   save(token) {
     localStorage.setItem("token", token);
-    window.location.assign("/dashboard");
+    // window.location.assign("/dashboard");
   }
 
   loggedIn() {

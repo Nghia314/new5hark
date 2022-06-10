@@ -6,7 +6,8 @@ import Security from "../utils/security";
 import { Link } from "react-router-dom";
 import ParticleComponent from "../components/ParticleComponent";
 
-import shark from "../assets/Shark.jpeg"
+import shark from "../assets/Shark.jpeg";
+
 import { DarkTheme } from "../components/Themes";
 import Particles from "react-tsparticles";
 import particleJson from "../config/particlesjs-config.json"
@@ -28,17 +29,24 @@ const Maincontainer = styled.div`
   }
 `;
 
-
 // css container
 const Container = styled.div`
 padding: 2rem
 justify-content: center
 `;
 const float = styled.div`
-0% { transform: translateY(-10px) }
-50% { transform: translateY(15px) translateX(15px) }
-100% { transform: translateY(-10px) }`
+  0% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(15px) translateX(15px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+`;
 
+<<<<<<< HEAD
 const Sharklogo= styled.div`
 position: absolute;
 bottom: 5%;
@@ -49,6 +57,19 @@ img{
   width: 100%;
   height: auto;
 }`;
+=======
+const Sharklogo = styled.div`
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  width: 25vw;
+  animation: ${float} 4s ease infinite;
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
+>>>>>>> 9b82435d87d2cfab9ec15dfd9cfe4d9b3e099892
 
 const rotate = keyframes`
 from {
@@ -89,6 +110,7 @@ const Home = () => {
   const handleClick = () => setClick(!click);
   return (
     <>
+<<<<<<< HEAD
     < ThemeProvider theme={DarkTheme} >
         <ParticleComponent />
       {Security.loggedIn() ? (
@@ -98,12 +120,44 @@ const Home = () => {
           <Container>
             <Center click={click}>
               <Link to={"/dashboard"}>
+=======
+      <ThemeProvider theme={DarkTheme}>
+        <ParticleComponent theme="dark" />
+
+        {Security.loggedIn() ? (
+          <Maincontainer>
+            <Container>
+              <Center click={click}>
+                <Link to={"/dashboard"}>
+                  <LoadingButton
+                    // onClick={() => handleClick()}
+                    width={click ? 120 : 200}
+                    height={click ? 120 : 200}
+                    fill="currentColor"
+                  />
+                </Link>
+                <span>Back To Dashboard</span>
+              </Center>
+            </Container>
+            <div className="flex justify-center p-3 mt-6">
+              {click ? <Loginform /> : null}
+            </div>
+          </Maincontainer>
+        ) : (
+          <Maincontainer>
+            <Container>
+              <Sharklogo>
+                <img src={shark} alt="sharklogo"></img>
+              </Sharklogo>
+              <Center click={click}>
+>>>>>>> 9b82435d87d2cfab9ec15dfd9cfe4d9b3e099892
                 <LoadingButton
-                  // onClick={() => handleClick()}
+                  onClick={() => handleClick()}
                   width={click ? 120 : 200}
                   height={click ? 120 : 200}
                   fill="currentColor"
                 />
+<<<<<<< HEAD
               </Link>
               <span>Back To Dashboard</span>
             </Center>
@@ -142,6 +196,18 @@ const Home = () => {
       )
     }
        </ThemeProvider>
+=======
+                <span>Click to Start!</span>
+              </Center>
+            </Container>
+
+            <div className="flex justify-center p-3 mt-6">
+              {click ? <Loginform /> : null}
+            </div>
+          </Maincontainer>
+        )}
+      </ThemeProvider>
+>>>>>>> 9b82435d87d2cfab9ec15dfd9cfe4d9b3e099892
     </>
   );
 };

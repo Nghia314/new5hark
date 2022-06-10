@@ -6,8 +6,6 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Chart({ counterState }) {
 
-  console.log("THIS IS COMING FROM CHART COMPONENT");
-
   const activityArray = [];
   const activityAmount = [];
 
@@ -16,9 +14,6 @@ function Chart({ counterState }) {
     activityArray.push(obj.name);
     activityAmount.push(obj.count);
   }
-
-  console.log(activityArray)
-  console.log(activityAmount)
 
   const data = {
     labels: activityArray,
@@ -33,8 +28,23 @@ function Chart({ counterState }) {
           'rgba(75, 192, 192, 0.2)',
           'rgba(153, 102, 255, 0.2)',
           'rgba(255, 159, 64, 0.2)',
+        // duplicate data
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+        // duplicate data
         ],
         borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+// duplicate data
           'rgba(255, 99, 132, 1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
@@ -48,7 +58,7 @@ function Chart({ counterState }) {
   };
 
   return (
-    <Doughnut className="max-h-screen" data={data} />
+    <Doughnut className="max-h-[600px] max-w-[600px]" data={data} />
   );
 }
 

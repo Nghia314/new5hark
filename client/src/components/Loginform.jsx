@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 import { loginUser } from "../utils/API";
 import Security from "../utils/security";
 
 function Loginform() {
   const [formState, setForm] = useState({ email: "", password: "" });
+
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,13 +25,16 @@ function Loginform() {
 
       const { token } = await res.json();
       Security.save(token);
+      setLoggedIn(true);
     } catch (err) {
       console.log(err);
       alert("Please try again!");
     }
   };
 
-  return (
+  return loggedIn ? (
+    <Navigate replace to={"/dashboard"}></Navigate>
+  ) : (
     <>
       <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
         <form onSubmit={handleFormSubmit}>

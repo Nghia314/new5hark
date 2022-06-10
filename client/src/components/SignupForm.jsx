@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 // import utils
 import { createUser } from "../utils/API";
@@ -6,6 +7,7 @@ import Security from "../utils/security";
 
 function SignupForm() {
   const [formState, setForm] = useState({ name: "", email: "", password: "" });
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,17 +25,15 @@ function SignupForm() {
       }
       const { token } = await res.json();
       Security.save(token);
+      setLoggedIn(true);
     } catch (err) {
       alert("Something Went Wrong, Please try again");
     }
-    setForm({
-      name: "",
-      email: "",
-      password: "",
-    });
   };
 
-  return (
+  return loggedIn ? (
+    <Navigate replace to={"/dashboard"}></Navigate>
+  ) : (
     <>
       <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
         <h2 className="text-center text-3xl font-bold mb-6">Sign up!</h2>
