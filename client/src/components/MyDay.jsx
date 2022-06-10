@@ -27,7 +27,7 @@ function MyDay({ myDayActivities }) {
         ))}
       </div>
       <Link to="/YourDay" state={{ from: myDayActivities }}>
-        <button className="btn btn-warning">Start my Day!</button>
+        <button className="btn btn-warning w-full">Start my Day!</button>
       </Link>
     </div>
   );

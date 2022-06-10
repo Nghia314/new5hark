@@ -16,18 +16,18 @@ function CreateActivityForm({
           type="text"
           placeholder="Activity Name"
           name="name"
+          autoComplete="off"
         />
         <input
           className="input input-primary mb-3 input-bordered w-full"
           type="text"
           placeholder="Description"
           name="description"
+          autoComplete="off"
         />
-        <button type="submit" className="btn btn-primary font-bold">
+        <button type="submit" className="btn btn-primary mb-3 font-bold">
           Add Activity
         </button>
-        <br></br>
-        <br></br>
       </form>
       <button onClick={handleDeleteState} className="btn btn-error font-bold">
         Delete Activities

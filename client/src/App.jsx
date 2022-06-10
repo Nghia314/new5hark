@@ -8,9 +8,6 @@ import YourDay from "./pages/YourDay";
 import Dashboard from "./pages/Dashboard";
 import ComponentTester from "./pages/ComponentTester";
 
-// Components
-import Navbar from "./components/Navbar";
-
 function App() {
   return (
     <BrowserRouter>
