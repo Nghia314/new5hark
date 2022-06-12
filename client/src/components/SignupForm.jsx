@@ -35,7 +35,7 @@ function SignupForm() {
     <Navigate replace to={"/dashboard"}></Navigate>
   ) : (
     <>
-      <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
+      <div className="z-10 block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
         <h2 className="text-center text-3xl font-bold mb-6">Sign up!</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="form-group mb-6">
