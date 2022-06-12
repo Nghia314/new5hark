@@ -42,16 +42,17 @@ const float = styled.div`
   }
 `;
 
-const Sharklogo= styled.div`
-position: absolute;
-bottom: 5%;
-right: 37%;
-width: 27vw;
-animation: ${float} 4s ease infinite;
-img{
-  width: 100%;
-  height: auto;
-}`;
+const Sharklogo = styled.div`
+  position: absolute;
+  bottom: 5%;
+  right: 37%;
+  width: 27vw;
+  animation: ${float} 4s ease infinite;
+  img {
+    width: 100%;
+    height: auto;
+  }
+`;
 
 const rotate = keyframes`
 from {
@@ -96,7 +97,7 @@ const Home = () => {
         {Security.loggedIn() ? (
           <Maincontainer>
             <Container>
-            <Sharklogo>
+              <Sharklogo>
                 <img src={shark} alt="sharklogo"></img>
               </Sharklogo>
               <Center click={click}>

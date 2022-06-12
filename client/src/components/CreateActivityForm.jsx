@@ -7,7 +7,7 @@ function CreateActivityForm({
 }) {
   return (
     <div>
-      <h1 className="mb-3">Create Activity</h1>
+      <h1 className="mb-3">Create an Activity</h1>
       {/* <Form / handleNewActivityForm></Form> */}
       <form onChange={handleFormChange} onSubmit={handleFormSubmit}>
         {/* <div className="input-group"> */}
