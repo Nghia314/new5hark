@@ -1,5 +1,6 @@
 import React from "react";
 
+//universal button component
 function Button({ color, activity, handleMoveToMyDay }) {
   return (
     <button

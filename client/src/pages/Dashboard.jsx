@@ -108,7 +108,7 @@ function Dashboard() {
     setDeleteState(!deleteState);
   };
 
-  // happens on page load, but may need to also happen when userActivities change
+  // happens on page load
   useEffect(() => {
     // gets all users's activities
     const allDataFetch = async () => {
@@ -143,7 +143,6 @@ function Dashboard() {
         }
 
         const data = await res.json();
-        // console.log(data.user.createdActivities);
         setUserActivities(data.user.createdActivities);
       } catch (err) {
         alert("Something Went Wrong with the userdatafetch function");
@@ -159,7 +158,7 @@ function Dashboard() {
       <Navbar />
       <div className="grid md:grid-rows-2-md md:grid-flow-col m-3 gap-3 text-center">
         <div className="card md:col-span-8 bg-neutral w-full p-3 text-center">
-          <h2 className="card-header text-3xl font-bold mb-3">Build your Day</h2>
+          <h2 className="card-header text-3xl font-bold mb-3">Shark Joy</h2>
           <div className="grid md:grid-cols-2 gap-3">
             <UserActivities
               className="md:col-span-8"
@@ -184,9 +183,11 @@ function Dashboard() {
           <MyDay myDayActivities={myDayActivities} />
         </div>
       </div>
-      <button className="btn btn-secondary hidden"></button> 
-      <button className="btn btn-primary hidden"></button> 
-      <button className="btn btn-warning hidden"></button> 
+      {/* ghost buttons to ensure build has these classnames   */}
+      <button className="btn btn-secondary hidden"></button>
+      <button className="btn btn-primary hidden"></button>
+      <button className="btn btn-warning hidden"></button>
+      <button className="btn btn-error hidden"></button>
     </>
   );
 }

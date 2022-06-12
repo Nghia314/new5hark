@@ -6,7 +6,6 @@ import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import YourDay from "./pages/YourDay";
 import Dashboard from "./pages/Dashboard";
-import ComponentTester from "./pages/ComponentTester";
 
 function App() {
   return (
@@ -16,7 +15,6 @@ function App() {
         <Route path="/Signup" element={<SignUp />} />
         <Route path="/YourDay" element={<YourDay />} />
         <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/ct" element={<ComponentTester />} />
         <Route
           path="*"
           element={

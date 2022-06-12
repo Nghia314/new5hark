@@ -36,7 +36,7 @@ function Loginform() {
     <Navigate replace to={"/dashboard"}></Navigate>
   ) : (
     <>
-      <div className="block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
+      <div className="z-10 block p-6 rounded-lg text-light shadow-lg bg-neutral w-full max-w-md">
         <form onSubmit={handleFormSubmit}>
           <div className="form-group mb-6">
             <h2 className="text-center text-3xl font-bold mb-6">Sign in</h2>
@@ -67,7 +67,7 @@ function Loginform() {
             Not a member?{" "}
             <Link
               to="/Signup"
-              className="text-primary hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
+              className="z-10 text-primary hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
             >
               Register
             </Link>
