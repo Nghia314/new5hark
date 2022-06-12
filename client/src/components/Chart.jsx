@@ -6,9 +6,9 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function Chart({ counterState }) {
 
+  // preparing data to be passed into chart
   const activityArray = [];
   const activityAmount = [];
-
   for (const key in counterState) {
     const obj = counterState[key];
     activityArray.push(obj.name);
