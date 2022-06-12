@@ -23,7 +23,7 @@ function MyDay({ myDayActivities }) {
       <h2 className="car-header text-2xl ">My Day</h2>
       <div className="grid grid-cols-2 gap-3 my-3">
         {myDayActivities.map((activity) => (
-          <Button key={activity._id} activity={activity} color={color} />
+          <Button key={activity._id} activity={activity} color={color} handleMoveToMyDay={()=>{}} />
         ))}
       </div>
       <Link to="/YourDay" state={{ from: myDayActivities }}>
