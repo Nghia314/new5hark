@@ -1,4 +1,6 @@
-# new5hark
+# New5hark
+![Shark Animation logo](/readme/00-shark-logo-small.gif)
+
 ## Table of Contents 📖
 
 * [ Description ](#description-📝)
@@ -13,6 +15,12 @@
 New5hark is a simple day joyfull builder app, where users can create their own activities and keep track of their activities. Users will have the ability to create an account and have access to their own dashboard which will contain their own activities and tracking status.
 
 ## Application Preview ⭐
+### Deployed Link: https://new5hark.herokuapp.com/
+
+![Adding an Activity](/readme/01-add-activity.gif)
+![Adding to MyDay](/readme/02-add-myday.gif)
+![Starting MyDay](/readme/03-start-myday.gif)
+![Ending MyDay](/readme/04-end-myday.gif)
 
 ## Features ⚡️
 - Responsive Navbar
@@ -64,4 +72,4 @@ Once, they all done with all the activities creation, the page will go to yourDa
 - [LinkedIn](https://www.linkedin.com/in/nghia-le-4a2b9b232/)
 - [GitHub](https://github.com/Nghia314)
 
-[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
